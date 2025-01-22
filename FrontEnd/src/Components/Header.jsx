@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet, Link } from "react-router-dom";
 const Header = () => {
   return (
     <header className="w-full border-b shadow-sm">
@@ -24,9 +25,11 @@ const Header = () => {
         </div>
 
         <div className="flex items-center space-x-4">
-          <button className="text-gray-600">
+          <Link  to="/Login" className="text-gray-600" >
           <i className="fas fa-user"></i>
-          </button>
+          </Link> 
+          
+          
           <button className="text-gray-600 relative">
           <i className="far fa-heart"></i>
             <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>

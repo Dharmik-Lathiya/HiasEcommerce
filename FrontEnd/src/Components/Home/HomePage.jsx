@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Slider from "react-slick";
-
+import Header from '../Header.jsx';
 function SimpleSlider() {
   const settings = {
     dots: true,
@@ -53,6 +53,7 @@ Bathrooms.push(obj2);
   };
   return (
     <>
+    <Header />
     <div className="container flex bg-slate-100 h-[40vw] w-full">
       <div className="slider-container lg:w-9/12 lg:h-40  pt-5 pl-5">
         <Slider {...settings}>

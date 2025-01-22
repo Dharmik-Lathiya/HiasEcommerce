@@ -1,12 +1,16 @@
 import './App.css'
-import Header from './Components/Header'
 import HomePage from './Components/Home/HomePage'
-
+import { BrowserRouter, Routes, Route } from "react-router";
+import Login from './Components/Login';
 function App() {
   return (
     <>
-      <Header/>
-      <HomePage/>
+      <BrowserRouter>
+        <Routes>
+        <Route index element={<HomePage />} />
+          <Route path="/Login" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
