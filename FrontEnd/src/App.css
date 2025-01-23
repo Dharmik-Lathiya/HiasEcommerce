@@ -2,6 +2,10 @@
     padding: 20px;
   }
   
+  ::-webkit-scrollbar {
+    display: none;
+}
+
   .slider-section {
     position: relative;
     margin-bottom: 20px;

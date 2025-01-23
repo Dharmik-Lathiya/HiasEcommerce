@@ -2,77 +2,7 @@ import React from 'react'
 import "./Login.css"
 import { useEffect } from 'react';
 
-
-
-
-
 export default function Login() {
-
-
-
-  function LogIn(e){
-
-    e.preventDefault();
-    let formData = { 
-    
-      email :  e.target[0].value,
-     
-      password :  e.target[1].value,   
-    }
-
-    console.log(formData);
-    
-    fetch("http://localhost:3000/user/login",{
-      method:"POST",
-      headers:{
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData)
-    }).then((res)=>{
-
-        res.json().then(data =>{
-          console.log(data);
-          
-        })
-        
-    }).catch((err)=>{
-      console.log(err)
-    })
-
-}
-
-  function SingnUp(e){
-
-      e.preventDefault();
-      let formData = { 
-        name :  e.target[0].value,
-        email :  e.target[1].value,
-        mobile :  e.target[2].value,
-        password :  e.target[3].value,   
-      }
-
-      console.log(formData);
-      
-      fetch("http://localhost:3000/user/singup",{
-        method:"POST",
-        headers:{
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData)
-      }).then((res)=>{
-
-          res.json().then(data =>{
-            console.log(data);
-            
-          })
-          
-      }).catch((err)=>{
-        console.log(err)
-      })
-
-  }
-    
-
   useEffect(() => {
     const loginText = document.querySelector(".title-text .login");
     const loginForm = document.querySelector("form.login");
@@ -94,7 +24,8 @@ export default function Login() {
     };
 }, []);
     return (
-    <div className="wrapper">
+    <div className="Login-container">
+      <div className="wrapper">
     <div className="title-text">
       <div className="title login">Login Form</div>
       <div className="title signup">Signup Form</div>
@@ -108,7 +39,7 @@ export default function Login() {
         <div className="slider-tab"></div>
       </div>
       <div className="form-inner">
-        <form action="#" className="login" onSubmit={LogIn}>
+        <form action="#" className="login">
           <div className="field">
             <input type="text" placeholder="Email Address" required/>
           </div>
@@ -122,28 +53,28 @@ export default function Login() {
           </div>
           <div className="signup-link">Not a member? <a href="">Signup now</a></div>
         </form>
-
-        <form action="#" className="signup" onSubmit={SingnUp}>
+        <form action="#" className="signup">
           <div className="field">
-            <input type="text" placeholder="Enter Name" required />
+            <input type="text" placeholder="Enter Name" required/>
           </div>
           <div className="field">
             <input type="text" placeholder="Email Address" required/>
           </div>
           <div className="field">
-            <input type="tel" placeholder="Mobile number" required />
+            <input type="password" placeholder="Password" required/>
           </div>
           <div className="field">
-            <input type="password" placeholder=" password" required/>
+            <input type="password" placeholder="Confirm password" required/>
           </div>
           <div className="field btn">
             <div className="btn-layer"></div>
-            <input type="submit" value="Signup"  />
+            <input type="submit" value="Signup"/>
           </div>
         </form>
       </div>
     </div>
   </div>
+    </div>
 
 
     
