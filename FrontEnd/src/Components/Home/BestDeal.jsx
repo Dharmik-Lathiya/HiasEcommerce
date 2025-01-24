@@ -77,8 +77,8 @@ export default function BestDeal() {
 
 
             <div className="flex mt-5 ml-5 mr-5 gap-5 lg:gap-2">
-                <div>
-                    <img src="src\assets\Product_2.jpg" alt="Best Deal 1" />
+                <div className="w-[60%] h-auto">
+                    <img src="src\assets\Best_deals.jpg" alt="Best Deal 1" className='w-[100%]'/>
                 </div>
                 <div>
                     <div className="mt-5 flex flex-wrap "  data-id="123">
