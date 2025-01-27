@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default function BestDeal() {
     let Menscasualwear = [
@@ -21,7 +21,8 @@ export default function BestDeal() {
             oldPrice: 200,
             star: 3,
             viewers: 1000
-        }, {
+        },
+        {
             imgUrl: "src/assets/Product_1.jpg",
             title: "Mens Casualwear 1",
             content: "Description for Mens Casualwear 1",
@@ -64,64 +65,66 @@ export default function BestDeal() {
     ];
 
     return (
-
         <>
-            <div className="flex flex-col lg:flex-row lg:mt-24 ml-5 mr-5 gap-5 lg:gap-2">
-                <div className="w-full">
-                    <span className="ml-[10%] text-2xl font-semibold">Best Deals Product</span>
+            {/* Header Section */}
+            <div className="flex flex-col lg:flex-row items-center lg:mt-24 mx-5 gap-5">
+                <div className="w-full text-center lg:text-left">
+                    <span className="text-2xl font-semibold">Best Deals Product</span>
                 </div>
-                <div className="w-full justify-items-end ml-[25%] *:ml-4 *:bg-green-700 *:rounded *:p-2 *:text-white">
-                    Hurry up! Offer ends in:<b>239</b><b>:59</b><b>12</b>
+                <div className="w-full text-center lg:text-right">
+                    <div className="bg-green-700 text-white px-4 py-2 rounded-md">
+                        Hurry up! Offer ends in: <b>239</b>:<b>59</b>:<b>12</b>
+                    </div>
                 </div>
             </div>
 
-
-            <div className="flex mt-5 ml-5 mr-5 gap-5 lg:gap-2">
-                <div className="w-[60%] h-auto">
-                    <img src="src\assets\Best_deals.jpg" alt="Best Deal 1" className='w-[100%]'/>
+            {/* Main Section */}
+            <div className="flex flex-col lg:flex-row items-start mt-5 mx-5 gap-5">
+                {/* Featured Image */}
+                <div className="w-full lg:w-[30%] ">
+                    <img
+                        src="src/assets/Best_deals.jpg"
+                        alt="Best Deal 1"
+                        className="w-full h-auto lg:h-[62.5vw] rounded-lg shadow-lg"
+                    />
                 </div>
-                <div>
-                    <div className="mt-5 flex flex-wrap "  data-id="123">
-                        {Menscasualwear.map((Menscasualwear, i) => (
-                            <div key={i} className=" ml-[1.7vw] w-full sm:w-72 bg-white rounded-lg shadow-2xl  h-auto">
-                                <span className="bg-green-600 px-4 py-2 absolute m-3 text-slate-100 rounded-tl-lg rounded-br-lg">Sale</span>
-                                <div>
-                                    <img
-                                        className="w-72 h-72 box-border rounded-tl-lg rounded-tr-lg"
-                                        src={Menscasualwear.imgUrl}
-                                        alt="Vitamin C"
-                                    />
-                                </div>
-                                <div className="p-5 font-poppins">
-                                    <div className="flex justify-between items-center">
-                                        <h3 className="font-semibold">{Menscasualwear.title}</h3>
-                                    </div>
 
-                                    <div className="mt-2 text-sm text-gray-600">
-                                        <p>{Menscasualwear.content}</p>
+                {/* Product Grid */}
+                <div className="w-full lg:w-[70%]">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                        {Menscasualwear.map((item, index) => (
+                            <div key={index} className="bg-white rounded-lg shadow-lg p-4 relative">
+                                <span className="bg-green-600 text-white px-3 py-1 absolute top-3 left-3 rounded-tl-lg rounded-br-lg">
+                                    Sale
+                                </span>
+                                <img
+                                    src={item.imgUrl}
+                                    alt={item.title}
+                                    className="w-full h-40 object-cover rounded-t-lg"
+                                />
+                                <div className="p-4">
+                                    <h3 className="font-semibold text-lg">{item.title}</h3>
+                                    <p className="text-gray-600 text-sm mt-1">{item.content}</p>
+                                    <div className="flex items-center mt-3">
+                                        <span className="font-bold text-lg">₹{item.newPrice}</span>
+                                        <span className="text-gray-400 line-through ml-2 text-sm">
+                                            ₹{item.oldPrice}
+                                        </span>
                                     </div>
-
-                                    <div className="mt-4 text-sm text-gray-600">
-                                        <h5 className="mt-2 font-semibold">{Menscasualwear.brandName}</h5>
-                                    </div>
-
-                                    <div className="flex items-center mt-2">
-                                        <div>
-                                            <span className="font-semibold text-lg">₹</span>
-                                            <span className="font-bold text-2xl">{Menscasualwear.newPrice}</span>
+                                    <div className="flex items-center justify-between mt-3">
+                                        <div className="flex space-x-1">
+                                            {[...Array(5)].map((_, i) => (
+                                                <span
+                                                    key={i}
+                                                    className={`text-xl ${
+                                                        i < item.star ? 'text-red-500' : 'text-gray-300'
+                                                    }`}
+                                                >
+                                                    ★
+                                                </span>
+                                            ))}
                                         </div>
-                                        <div>
-                                            <span className="text-gray-400 line-through ml-2">₹{Menscasualwear.oldPrice}</span>
-                                        </div>
-                                    </div>
-                                    <div className="flex space-x-1">
-                                        {[5, 4, 3, 2, 1].map((val) => (
-                                            <label key={val}>
-                                                <input type="radio" name="rating" value={Menscasualwear.star} className="hidden" />
-                                                <span className="text-red-500 cursor-pointer text-xl">&#9733;</span>
-                                            </label>
-                                        ))}
-                                        <span className="text-slate-300 ml-10">{Menscasualwear.viewers} Views</span>
+                                        <span className="text-gray-500 text-sm">{item.viewers} Views</span>
                                     </div>
                                 </div>
                             </div>
@@ -130,5 +133,5 @@ export default function BestDeal() {
                 </div>
             </div>
         </>
-    )
+    );
 }
