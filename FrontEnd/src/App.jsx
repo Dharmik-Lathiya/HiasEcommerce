@@ -7,6 +7,7 @@ import AdminDashboard from './Components/adminPanel/admindashboard/AdminDashboar
 import AdminProducts from './Components/adminPanel/adminproducts/AdminProducts';
 import TrandingProducts from './Components/Home/TrandingProducts';
 import ProductDetails from './Components/ProductsDetails/ProductDetails';
+import OrderSummary from './Components/OrderSummary';
 
 
 
@@ -156,6 +157,9 @@ function App() {
         </Route>
         <Route path="/trending" element={<TrandingProducts products={allProducts} />} />
         <Route path="/product/:productId" element={<ProductDetails products={allProducts} />} />
+        
+        
+        <Route path="Orders/:productId" element={<OrderSummary products={allProducts} />}/>
 
 
       </Routes>

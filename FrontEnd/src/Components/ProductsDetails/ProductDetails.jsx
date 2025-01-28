@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck, faRotate, faCreditCard } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../Footer";
 import RecentlyViewed from "./RecentlyViewed";
-
+import {Link} from 'react-router-dom'
 
 
 
@@ -88,12 +88,17 @@ export default function ProductDetails({ products }) {
                 />
               </div>
               <div className="space-y-2">
-                <button className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600">
+                <button className="w-full bg-green-500 text-white py-2 my-2 rounded-md hover:bg-green-600">
                   Add to Cart
                 </button>
+                <Link
+                                        to={`/Orders/${product.id}`}
+                                        className="text-blue-500 hover:underline"
+                                    >
                 <button className="w-full bg-gray-700 text-white py-2 rounded-md hover:bg-gray-800">
                   Buy it Now
                 </button>
+                </Link>
               </div>
             </div>
 
