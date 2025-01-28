@@ -1,5 +1,7 @@
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
+import logo from '../assets/logo.png'
+
 const Header = () => {
   return (
     <header className="w-full border-b shadow-sm">
@@ -9,7 +11,7 @@ const Header = () => {
           <i className="fas fa-bars text-2xl"></i>
           </button>
           <img
-            src="src\assets\logo.png" alt="Logo" className="h-14 m-auto w-32" 
+            src={logo} alt="Logo" className="h-14 m-auto w-32" 
           />
         </div>
 

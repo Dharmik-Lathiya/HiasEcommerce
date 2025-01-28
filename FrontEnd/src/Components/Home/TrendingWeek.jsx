@@ -110,7 +110,7 @@ function SwipeToSlide() {
         <Slider {...settings}>
           {Menscasualwear.map((product, i) => (
             <div key={i} className="px-2">
-              <div className="group relative bg-white rounded-lg shadow-2xl p-4 overflow-hidden">
+              <div className="group relative bg-white rounded-lg shadow-2xl overflow-hidden">
                 {/* Sale Badge */}
                 <span className="bg-green-600 px-4 py-2 absolute m-3 text-white rounded-tl-lg rounded-br-lg">
                   Sale
@@ -118,6 +118,7 @@ function SwipeToSlide() {
 
                 {/* Product Image Container */}
                 <div className="relative overflow-hidden">
+                  
                   <img
                     className="w-full h-52 object-cover rounded-lg transition-transform duration-300 group-hover:scale-110"
                     src={product.imgUrl}
@@ -136,7 +137,7 @@ function SwipeToSlide() {
                 </div>
 
                 {/* Product Info */}
-                <div className="mt-4">
+                <div className="mt-4 px-4">
                   <h3 className="font-semibold text-lg">{product.title}</h3>
                   <p className="mt-2 text-sm text-gray-600">{product.content}</p>
                   <h5 className="mt-2 font-semibold">{product.brandName}</h5>
