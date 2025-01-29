@@ -4,77 +4,13 @@ import { Link } from "react-router-dom";
 
 
 
-export default function RecentlyViewed() {
+export default function RecentlyViewed({products,category}) {
 
-    const MensCasualwear = [
-        {
-            id: 1,
-            imgUrl: "src/assets/Product_1.jpg",
-            title: "Mens Casualwear 1",
-            content: "Description for Mens Casualwear 1",
-            brandName: "Brand 1",
-            newPrice: 100,
-            oldPrice: 200,
-            star: 3,
-            viewers: 1000,
-        },
-        {
-            id: 2,
-            imgUrl: "src/assets/Product_1.jpg",
-            title: "Mens Casualwear 1",
-            content: "Description for Mens Casualwear 1",
-            brandName: "Brand 1",
-            newPrice: 100,
-            oldPrice: 200,
-            star: 3,
-            viewers: 1000,
-        },
-        {
-            id: 3,
-            imgUrl: "src/assets/Product_1.jpg",
-            title: "Mens Casualwear 1",
-            content: "Description for Mens Casualwear 1",
-            brandName: "Brand 1",
-            newPrice: 100,
-            oldPrice: 200,
-            star: 3,
-            viewers: 1000,
-        },
-        {
-            id: 4,
-            imgUrl: "src/assets/Product_2.jpg",
-            title: "Womens Westernwear 1",
-            content: "Description for Womens Westernwear 1",
-            brandName: "Brand 2",
-            newPrice: 150,
-            oldPrice: 250,
-            star: 4,
-            viewers: 1200,
-        },
-        {
-            id: 5,
-            imgUrl: "src/assets/Product_2.jpg",
-            title: "Womens Westernwear 1",
-            content: "Description for Womens Westernwear 1",
-            brandName: "Brand 2",
-            newPrice: 150,
-            oldPrice: 250,
-            star: 4,
-            viewers: 1200,
-        },
-        {
-            id: 6,
-            imgUrl: "src/assets/Product_4.png",
-            title: "Officewear 1",
-            content: "Description for Officewear 1",
-            brandName: "Brand 4",
-            newPrice: 250,
-            oldPrice: 350,
-            star: 4,
-            viewers: 1300,
-        },
-        // Add more products here if needed
-    ];
+    
+    let filteredProducts = products.filter((product)=>{
+        return product.category == category ? product : 0;
+    })
+
 
     const settings = {
         className: "center",
@@ -82,38 +18,16 @@ export default function RecentlyViewed() {
         centerPadding: "20px",
         slidesToShow: 4,
         swipeToSlide: true,
-        responsive: [
-            {
-                breakpoint: 1400,
-                settings: { slidesToShow: 6 },
-            },
-            {
-                breakpoint: 1200,
-                settings: { slidesToShow: 5 },
-            },
-            {
-                breakpoint: 1024,
-                settings: { slidesToShow: 4 },
-            },
-            {
-                breakpoint: 768,
-                settings: { slidesToShow: 2 },
-            },
-            {
-                breakpoint: 480,
-                settings: { slidesToShow: 2 },
-            },
-        ],
     };
 
     return (
         <>
             <div className="w-full text-center my-12 text-3xl font-semibold">
-                <p>Trending This Week</p>
+                <p>Recently Viewd</p>
             </div>
             <div className="slider-container my-10">
                 <Slider {...settings}>
-                    {MensCasualwear.map((product, i) => (
+                    {filteredProducts.map((product, i) => (
                         <div key={i} className="px-2">
                             <div className="group relative bg-white rounded-lg border overflow-hidden">
                                 <span className="bg-green-600 px-4 py-2 absolute m-3 text-white rounded-tl-lg rounded-br-lg">
@@ -126,8 +40,8 @@ export default function RecentlyViewed() {
                                     >
                                         <img
                                             className="w-full h-52 object-cover rounded-lg transition-transform duration-300 group-hover:scale-110"
-                                            src={product.imgUrl}
-                                            alt={product.title}
+                                            src={product.imgUrl[0]}
+                                            alt={product.name}
                                         />
                                     </Link>
                                     <button className="absolute top-4 right-4 bg-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 translate-x-6 group-hover:translate-x-0 transition-all duration-300">
@@ -138,17 +52,17 @@ export default function RecentlyViewed() {
                                     </button>
                                 </div>
                                 <div className="mt-4 px-4">
-                                    <h3 className="font-semibold text-lg">{product.title}</h3>
-                                    <p className="mt-2 text-sm text-gray-600">{product.content}</p>
-                                    <h5 className="mt-2 font-semibold">{product.brandName}</h5>
+                                    <h3 className="font-semibold text-lg">{product.name}</h3>
+                                    <p className="mt-2 text-sm text-gray-600">{product.desc}</p>
+                                    <h5 className="mt-2 font-semibold">Hias</h5>
                                     <div className="flex items-center mt-2">
                                         <div>
                                             <span className="font-semibold text-lg">₹</span>
-                                            <span className="font-bold text-2xl">{product.newPrice}</span>
+                                            <span className="font-bold text-2xl">{product.price - (product.price * 20)/100 }</span>
                                         </div>
                                         <div>
                                             <span className="text-gray-400 line-through ml-2">
-                                                ₹{product.oldPrice}
+                                                ₹{product.price}
                                             </span>
                                         </div>
                                     </div>
@@ -163,7 +77,7 @@ export default function RecentlyViewed() {
                                             </span>
                                         ))}
                                         <span className="text-gray-500 ml-auto">
-                                            {product.viewers} Views
+                                            {product.stock} Views
                                         </span>
                                     </div>
                                 </div>

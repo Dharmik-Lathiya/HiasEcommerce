@@ -49,7 +49,7 @@ export default function TrandingProducts(props) {
                             </div>
 
                             <div className="mt-2 text-sm text-gray-600">
-                                <p>{product.desc}</p>
+                                <p>{product.desc.slice(0, 50)+" . . ."}</p>
                             </div>
 
                             <div className="mt-4 text-sm text-gray-600">
@@ -72,7 +72,7 @@ export default function TrandingProducts(props) {
                                         <span className="text-red-500 cursor-pointer text-xl">&#9733;</span>
                                     </label>
                                 ))}
-                                <span className="text-slate-300 ml-10">{product.viewers} Views</span>
+                                <span className="text-slate-400 ml-10">In Stock {product.stock} Items</span>
                             </div>
                         </div>
                     </div>

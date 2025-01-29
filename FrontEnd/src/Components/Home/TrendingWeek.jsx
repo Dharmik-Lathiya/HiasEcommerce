@@ -77,7 +77,7 @@ function SwipeToSlide(props) {
                 {/* Product Info */}
                 <div className="mt-4 px-4">
                   <h3 className="font-semibold text-lg">{product.name}</h3>
-                  <p className="mt-2 text-sm text-gray-600">{product.desc}</p>
+                  <p className="mt-2 text-sm text-gray-600">{product.desc.slice(0, 50)+" . . ."}</p>
                   <h5 className="mt-2 font-semibold">Hias</h5>
                   <div className="flex items-center mt-2">
                     <div>
@@ -102,7 +102,7 @@ function SwipeToSlide(props) {
                       </span>
                     ))}
                     <span className="text-gray-500 ml-auto">
-                      {product.viewers} Views
+                      {product.stock} Item Avalable 
                     </span>
                   </div>
                 </div>
