@@ -169,10 +169,10 @@ export default function AddProductsFrom(props) {
                 required
               >
                 <option value="">Select a category</option>
-                <option value="electronics">Electronics</option>
-                <option value="fashion">Fashion</option>
-                <option value="home">Home</option>
-                <option value="sports">Sports</option>
+                <option value="Menswear">Men's wear</option>
+                <option value="Womenswear">Women's wear</option>
+                <option value="kidwear">kid's wear</option>
+                <option value="sports">Sports wear</option>
               </select>
             </div>
             <div>
