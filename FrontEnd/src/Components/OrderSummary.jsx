@@ -5,7 +5,8 @@ import Footer from "./Footer";
 
 export default function OrderSummary({ products }) {
     const { productId } = useParams();
-    const product = products.find((p) => p.id === parseInt(productId, 10));
+    const product = products.find((p) => p._id === productId);
+    
   return (
     <>
     <Header/>
@@ -94,26 +95,6 @@ export default function OrderSummary({ products }) {
         {/* Payment Section */}
         <div className="mb-6">
           <h2 className="text-lg font-semibold mb-2">Payment</h2>
-          <p className="text-sm text-gray-600 mb-3">
-            All transactions are secure and encrypted.
-          </p>
-          <div className="border border-gray-300 rounded-md p-4 mb-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input type="radio" className="mr-3" checked />
-                <span>Razorpay Secure (UPI, Cards, Wallets, NetBanking)</span>
-              </div>
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Razorpay_logo.svg/2560px-Razorpay_logo.svg.png"
-                alt="Razorpay"
-                className="w-16"
-              />
-            </div>
-            <p className="text-sm text-gray-500 mt-2">
-              After clicking "Pay now", you will be redirected to Razorpay to
-              complete your purchase securely.
-            </p>
-          </div>
 
           <div className="border border-gray-300 rounded-md p-4">
             <div className="flex items-center">
@@ -124,49 +105,34 @@ export default function OrderSummary({ products }) {
         </div>
 
         {/* Billing Address */}
-        <div className="mb-6">
-          <h2 className="text-lg font-semibold mb-2">Billing address</h2>
-          <div className="border border-gray-300 rounded-md p-4">
-            <div className="flex items-center">
-              <input type="radio" className="mr-3" checked />
-              <span>Same as shipping address</span>
-            </div>
-          </div>
-          <div className="border border-gray-300 rounded-md p-4 mt-2">
-            <div className="flex items-center">
-              <input type="radio" className="mr-3" />
-              <span>Use a different billing address</span>
-            </div>
-          </div>
-        </div>
 
         {/* Pay Now Button */}
-        <button className="w-full bg-blue-600 text-white p-3 rounded-md text-lg font-semibold">
-          Pay now
+        <button className="w-full bg-green-600 text-white p-3 rounded-md text-lg font-semibold">
+          Complete order
         </button>
       </div>
 
       {/* Right Section - Order Summary */}
       <div className="w-full lg:w-1/3 bg-white p-6 rounded-lg shadow-md mt-6 lg:mt-0">
         <h2 className="text-lg font-semibold mb-4">Order Summary</h2>
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-4 border p-5 rounded-2xl">
           <img
-            src="https://via.placeholder.com/60"
+            src={product.imgUrl[0]}
             alt="Product"
             className="w-16 h-16 rounded-md"
           />
           <div>
-            <p className="text-gray-700">{product.title}</p>
-            <p className="text-gray-500">{product.content}</p>
+            <p className="text-gray-700">{product.name}</p>
+            <p className="text-gray-500">{product.desc.slice(0,50)+" . . ."}</p>
           </div>
-          <span className="ml-auto font-semibold">{product.newPrice}</span>
+          <span className="ml-auto font-semibold">{product.price}</span>
         </div>
 
         <div className="border-t my-4"></div>
 
         <div className="flex justify-between text-gray-700">
           <span>Subtotal</span>
-          <span>{product.newPrice}</span>
+          <span>{product.price}</span>
         </div>
 
         <div className="flex justify-between text-gray-700 mt-2">

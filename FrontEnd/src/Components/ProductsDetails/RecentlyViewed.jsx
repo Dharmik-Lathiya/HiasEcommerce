@@ -11,7 +11,6 @@ export default function RecentlyViewed({products,category}) {
         return product.category == category ? product : 0;
     })
 
-    console.log(filteredProducts);
     
     const settings = {
         className: "center",
@@ -54,7 +53,7 @@ export default function RecentlyViewed({products,category}) {
                                 </div>
                                 <div className="mt-4 px-4">
                                     <h3 className="font-semibold text-lg">{product.name}</h3>
-                                    <p className="mt-2 text-sm text-gray-600">{product.desc}</p>
+                                    <p className="mt-2 text-sm text-gray-600">{product.desc.slice(0,50)+" . . ."}</p>
                                     <h5 className="mt-2 font-semibold">Hias</h5>
                                     <div className="flex items-center mt-2">
                                         <div>
