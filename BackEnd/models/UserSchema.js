@@ -30,7 +30,11 @@ const userSchema = new mongoose.Schema({
     required: [true, 'Password is required'],
     minlength: [6, 'Name must be at least 6 characters long'],
     maxlength: [100, 'Name must not exceed 100 characters']
-  }
+  },
+  location:{
+    type:String
+  },
+  order:[{type:Number}]
 },{strict:false});
 
 module.exports = mongoose.model('User', userSchema);

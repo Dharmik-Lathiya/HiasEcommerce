@@ -26,7 +26,7 @@ export default function Login() {
     }).then((res)=>{
         res.json().then(data =>{
           
-          data.success ?( localStorage.setItem("isLogedIn",data.success) ,navigate('/home') ) : localStorage.setItem("isLogedIn",data.success)
+          data.success ?( localStorage.setItem("isLogedIn",data.success) ,navigate('/admin') ) : localStorage.setItem("isLogedIn",data.success)
         
           
         })
@@ -54,7 +54,7 @@ export default function Login() {
       }).then((res)=>{
           res.json().then(data =>{
             
-            data.success ?( localStorage.setItem("isLogedIn",data.success) ,navigate('/home') ) : localStorage.setItem("isLogedIn",data.success)
+            data.success ?( localStorage.setItem("isLogedIn",data.success) ,navigate('/admin') ) : localStorage.setItem("isLogedIn",data.success)
 
             
           })

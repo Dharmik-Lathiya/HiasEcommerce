@@ -4,7 +4,7 @@ const UserSignUp = require("./auth/UserSignUp");
 const addProducts = require("./products/addProducts")
 const deleteProducts = require("./products/deleteProduct")
 const updateProducts = require("./products/updateProducts")
-
+const allProducts  = require("./products/allProducts")
 
 route.get("/",(req,res)=>{
         res.send("helllo")
@@ -14,5 +14,6 @@ route.post('/user/login',UserLogin);
 route.post('/admin/addProducts',addProducts);
 route.post('/admin/deleteProducts',deleteProducts);
 route.post('/admin/updateProducts',updateProducts);
+route.post('/admin/allProducts',allProducts);
 
-module.exports = route;
+module.exports = route; 
