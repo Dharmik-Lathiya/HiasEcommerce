@@ -25,6 +25,7 @@ export default function Login() {
       body: JSON.stringify(formData)
     }).then((res)=>{
         res.json().then(data =>{
+          console.log(data);
           
           data.success ?( localStorage.setItem("isLogedIn",data.success) ,navigate('/admin') ) : localStorage.setItem("isLogedIn",data.success)
         

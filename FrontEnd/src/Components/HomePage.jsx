@@ -9,7 +9,7 @@ import Recommended from './Home/Recommended.jsx';
 import Footer from './Footer.jsx';
 import TrandingProducts from './Home/TrandingProducts.jsx';
 
-function HomePage() {
+function HomePage(props) {
   const settings = {
     dots: true,
     infinite: true,
@@ -23,6 +23,8 @@ function HomePage() {
   const Heart = () => {
     setHeart(!heart);
   };
+  console.log(props.products);
+
 
   return (
     <>
@@ -88,7 +90,7 @@ function HomePage() {
           </div>
         </div>
 
-      <TrandingProducts/>
+      <TrandingProducts products={props.products}/>
 
       <div className="flex flex-col lg:flex-row lg:mt-14 ml-5 mr-5 gap-5 lg:gap-2">
         <div className="w-full">
@@ -107,10 +109,10 @@ function HomePage() {
         </div>
       </div>
     
-    <BestDeal/>
-    <Collection/>
-    <TrendingWeek/>
-    <Recommended/>
+    <BestDeal products={props.products}/>
+    <Collection />
+    <TrendingWeek products={props.products}/>
+    <Recommended products={props.products}/>
     <Video/>
     <Footer/>
     </>

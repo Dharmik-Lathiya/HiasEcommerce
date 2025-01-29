@@ -1,76 +1,9 @@
 import React from "react";
 import Slider from "react-slick";
 
-function SwipeToSlide() {
-  const Menscasualwear = [
-    {
-      imgUrl: "src/assets/Product_1.jpg",
-      title: "Mens Casualwear 1",
-      content: "Description for Mens Casualwear 1",
-      brandName: "Brand 1",
-      newPrice: 100,
-      oldPrice: 200,
-      star: 3,
-      viewers: 1000,
-    },
-    {
-      imgUrl: "src/assets/Product_2.jpg",
-      title: "Mens Casualwear 2",
-      content: "Description for Mens Casualwear 2",
-      brandName: "Brand 2",
-      newPrice: 120,
-      oldPrice: 220,
-      star: 4,
-      viewers: 1500,
-    },
-    {
-      imgUrl: "src/assets/Product_4.png",
-      title: "Officewear 1",
-      content: "Description for Officewear 1",
-      brandName: "Brand 4",
-      newPrice: 250,
-      oldPrice: 350,
-      star: 5,
-      viewers: 2000,
-    },
-    {
-        imgUrl: "src/assets/Product_4.png",
-        title: "Officewear 1",
-        content: "Description for Officewear 1",
-        brandName: "Brand 4",
-        newPrice: 250,
-        oldPrice: 350,
-        star: 5,
-        viewers: 2000,
-      },{
-        imgUrl: "src/assets/Product_4.png",
-        title: "Officewear 1",
-        content: "Description for Officewear 1",
-        brandName: "Brand 4",
-        newPrice: 250,
-        oldPrice: 350,
-        star: 5,
-        viewers: 2000,
-      },{
-        imgUrl: "src/assets/Product_4.png",
-        title: "Officewear 1",
-        content: "Description for Officewear 1",
-        brandName: "Brand 4",
-        newPrice: 250,
-        oldPrice: 350,
-        star: 5,
-        viewers: 2000,
-      },{
-        imgUrl: "src/assets/Product_4.png",
-        title: "Officewear 1",
-        content: "Description for Officewear 1",
-        brandName: "Brand 4",
-        newPrice: 250,
-        oldPrice: 350,
-        star: 5,
-        viewers: 2000,
-      },
-  ];
+function SwipeToSlide(props) {
+
+
 
   const settings = {
     className: "center",
@@ -101,6 +34,11 @@ function SwipeToSlide() {
       },
     ],
   };
+
+
+  let filteredProducts = props.products.filter((product)=>{
+    return product.category == 'Womenswear' ? product : 0;
+})
   return (
     <>
       <div className="w-full text-center my-12 text-3xl font-semibold">
@@ -108,7 +46,7 @@ function SwipeToSlide() {
       </div>
       <div className="slider-container">
         <Slider {...settings}>
-          {Menscasualwear.map((product, i) => (
+          {filteredProducts.map((product, i) => (
             <div key={i} className="px-2">
               <div className="group relative bg-white rounded-lg shadow-2xl overflow-hidden">
                 {/* Sale Badge */}
@@ -121,8 +59,8 @@ function SwipeToSlide() {
                   
                   <img
                     className="w-full h-52 object-cover rounded-lg transition-transform duration-300 group-hover:scale-110"
-                    src={product.imgUrl}
-                    alt={product.title}
+                    src={product.imgUrl[0]}
+                    alt={product.name}
                   />
 
                   {/* Heart Icon */}
@@ -138,17 +76,17 @@ function SwipeToSlide() {
 
                 {/* Product Info */}
                 <div className="mt-4 px-4">
-                  <h3 className="font-semibold text-lg">{product.title}</h3>
-                  <p className="mt-2 text-sm text-gray-600">{product.content}</p>
-                  <h5 className="mt-2 font-semibold">{product.brandName}</h5>
+                  <h3 className="font-semibold text-lg">{product.name}</h3>
+                  <p className="mt-2 text-sm text-gray-600">{product.desc}</p>
+                  <h5 className="mt-2 font-semibold">Hias</h5>
                   <div className="flex items-center mt-2">
                     <div>
                       <span className="font-semibold text-lg">₹</span>
-                      <span className="font-bold text-2xl">{product.newPrice}</span>
+                      <span className="font-bold text-2xl">{product.price - (product.price * 20)/100 }</span>
                     </div>
                     <div>
                       <span className="text-gray-400 line-through ml-2">
-                        ₹{product.oldPrice}
+                        ₹{product.price}
                       </span>
                     </div>
                   </div>

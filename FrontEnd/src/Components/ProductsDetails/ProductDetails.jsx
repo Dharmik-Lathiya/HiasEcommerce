@@ -1,24 +1,26 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import Header from "../Header";
-import productid from "../../assets/Product_1.jpg";
-import productid2 from "../../assets/Product_2.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck, faRotate, faCreditCard } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../Footer";
 import RecentlyViewed from "./RecentlyViewed";
 import {Link} from 'react-router-dom'
+import SwipeToSlide from "../Home/TrendingWeek";
 
 
 
 export default function ProductDetails({ products }) {
+  console.log(products);
+  
   const { productId } = useParams();
-  const product = products.find((p) => p.id === parseInt(productId, 10));
+  
+  const product = products.find((p) => p._id == productId );
 
   // State to manage the currently displayed main image
-  const [mainImage, setMainImage] = useState(productid);
+  const [mainImage, setMainImage] = useState(product.imgUrl[0]);
 
-  return (
+  return ( 
     <>
       <Header />
       <div className="max-w-7xl mx-auto px-4 py-8">
@@ -28,12 +30,12 @@ export default function ProductDetails({ products }) {
             {/* Main Image */}
             <img
               src={mainImage}
-              alt={product.title}
+              alt={product.name}
               className="rounded-lg shadow-md w-[100%] h-96"
             />
             <div className="mt-4 grid grid-cols-4 gap-2">
               {/* Thumbnails */}
-              {[productid, productid2, productid, productid2].map((img, index) => (
+              {product.imgUrl.map((img, index) => (
                 <img
                   key={index}
                   src={img}
@@ -47,13 +49,13 @@ export default function ProductDetails({ products }) {
 
           {/* Right Product Info Section */}
           <div>
-            <h1 className="text-3xl font-bold mb-4">{product.title}</h1>
-            <p className="text-gray-700 mb-4">{product.content}</p>
+            <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
+            <p className="text-gray-700 mb-4">{product.desc}</p>
             <div className="flex items-center space-x-4 mb-4">
               <p className="text-xl text-red-600 font-semibold">
-                Rs. {product.newPrice}
+                Rs. {product.price - (product.price * 20)/100 }
               </p>
-              <p className="line-through text-gray-500">Rs. {product.oldPrice}</p>
+              <p className="line-through text-gray-500">Rs. {product.price}</p>
             </div>
 
             {/* Star Rating */}
@@ -137,7 +139,7 @@ export default function ProductDetails({ products }) {
           </div>
         </div>
       </div>
-      <RecentlyViewed/>
+      <SwipeToSlide />
       <Footer/>
     </>
   );
