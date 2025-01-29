@@ -10,6 +10,7 @@ import TrandingProducts from './Components/Home/TrandingProducts';
 import ProductDetails from './Components/ProductsDetails/ProductDetails';
 import OrderSummary from './Components/OrderSummary';
 import { useEffect, useState } from 'react';
+import AddToCart from './Components/AddToCart';
 
 
 
@@ -45,6 +46,7 @@ useEffect(()=>{
 
 
         </Route>
+        <Route path="/cart" element={<AddToCart/>}/>
         <Route path="/trending" element={<TrandingProducts products={allProducts} />} />
         <Route path="/product/:productId" element={<ProductDetails products={allProducts} />} />
         

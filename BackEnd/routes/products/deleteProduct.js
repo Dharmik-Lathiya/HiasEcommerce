@@ -7,8 +7,8 @@ const deleteProducts = async (req,res)=>{
     console.log("dfghj");
     
 
-     let data = await product.findByIdAndDelete(req.body.id).them(()=>{
-        res.status(200).send("SuccessFully Deleted")
+     let data = await product.findByIdAndDelete(req.body.id).then(()=>{
+        res.status(200).send({msg:"SuccessFully Deleted"})
      }).catch((err)=>res.status(400).send(err))
     
 }

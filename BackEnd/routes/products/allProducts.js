@@ -4,7 +4,7 @@ const product = require("../../models/products");
 const AllProducts = async (req, res) => {
 
     let filter = req.body ? req.body.filter : { };
-    console.log(filter);
+    
     
     try {
 
