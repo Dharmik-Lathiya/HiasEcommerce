@@ -19,10 +19,6 @@ function HomePage(props) {
   };
 
 
-  const Heart = () => {
-    setHeart(!heart);
-  };
-  console.log(props.products);
 
 
   return (

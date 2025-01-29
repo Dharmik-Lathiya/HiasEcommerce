@@ -11,7 +11,8 @@ export default function RecentlyViewed({products,category}) {
         return product.category == category ? product : 0;
     })
 
-
+    console.log(filteredProducts);
+    
     const settings = {
         className: "center",
         infinite: true,
@@ -35,7 +36,7 @@ export default function RecentlyViewed({products,category}) {
                                 </span>
                                 <div className="relative overflow-hidden">
                                     <Link
-                                        to={`/product/${product.id}`}
+                                        to={`/product/${product._id}`}
                                         className="text-blue-500 hover:underline"
                                     >
                                         <img
