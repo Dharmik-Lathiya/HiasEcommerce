@@ -47,7 +47,7 @@ export default function BestDeal(props) {
                                 />
                                 <div className="p-4">
                                     <h3 className="font-semibold text-lg">{item.name}</h3>
-                                    <p className="text-gray-600 text-sm mt-1">{item.desc}</p>
+                                    <p className="text-gray-600 text-sm mt-1">{item.desc.slice(0, 50)+" . . ."}</p>
                                     <div className="flex items-center mt-3">
                                         <span className="font-bold text-lg">₹{item.price - (item.price * 20)/100 }</span>
                                         <span className="text-gray-400 line-through ml-2 text-sm">

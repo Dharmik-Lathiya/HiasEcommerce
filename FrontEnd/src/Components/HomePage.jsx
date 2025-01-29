@@ -18,7 +18,6 @@ function HomePage(props) {
     slidesToScroll: 1
   };
 
-  const [heart, setHeart] = useState(1);
 
   const Heart = () => {
     setHeart(!heart);

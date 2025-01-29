@@ -6,7 +6,6 @@ import { faTruck, faRotate, faCreditCard } from "@fortawesome/free-solid-svg-ico
 import Footer from "../Footer";
 import RecentlyViewed from "./RecentlyViewed";
 import {Link} from 'react-router-dom'
-import SwipeToSlide from "../Home/TrendingWeek";
 
 
 
@@ -94,7 +93,7 @@ export default function ProductDetails({ products }) {
                   Add to Cart
                 </button>
                 <Link
-                                        to={`/Orders/${product.id}`}
+                                        to={`/Orders/${product._id}`}
                                         className="text-blue-500 hover:underline"
                                     >
                 <button className="w-full bg-gray-700 text-white py-2 rounded-md hover:bg-gray-800">
@@ -139,7 +138,7 @@ export default function ProductDetails({ products }) {
           </div>
         </div>
       </div>
-      <SwipeToSlide />
+      <RecentlyViewed products={products}  category={product.category}/>
       <Footer/>
     </>
   );
