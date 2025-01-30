@@ -9,6 +9,8 @@ const Header = () => {
 
   let cartCounter = localStorage.getItem("cartCounter");
 
+  let isLogedIn = JSON.parse(localStorage.getItem("isLogedIn"));
+
   useEffect(() => {
     const handleScroll = () => {
       setIsFixed(window.scrollY > 100);
@@ -54,7 +56,7 @@ const Header = () => {
         </div>
 
         <div className="flex items-center space-x-4">
-          <Link to="/Login" className="text-gray-600">
+          <Link to={isLogedIn ? "/user" : "/Login"} className="text-gray-600">
             <i className="fas fa-user"></i>
           </Link>
 

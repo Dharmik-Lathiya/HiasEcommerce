@@ -7,6 +7,13 @@ const updateProducts = require("./products/updateProducts")
 const allProducts  = require("./products/allProducts")
 const createOrders = require("./orders/createOrder")
 const  getOrders = require("./orders/getOrders")
+const userOrders = require("./orders/userOrders") 
+
+
+
+
+
+
 
 route.get("/",(req,res)=>{
         res.send("helllo")
@@ -19,5 +26,6 @@ route.post('/admin/updateProducts',updateProducts);
 route.post('/admin/allProducts',allProducts);
 route.post('/buy',createOrders);
 route.post('/admin/Orders',getOrders);
+route.post('/userOrders',userOrders);
 
 module.exports = route; 

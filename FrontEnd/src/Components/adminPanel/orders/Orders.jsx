@@ -24,8 +24,8 @@ export default function Orders() {
               </div>
               <div>
             {
-                data.map((order) =>{
-                      return  <OrdersList name={order.name} location={order.location} total={order.total}  products={order.Orderdproducts} quantity={order.quantity}/>
+                data.map((order,i) =>{
+                      return  <OrdersList key={i} name={order.name} location={order.location} total={order.total}  products={order.Orderdproducts} quantity={order.quantity}/>
                 })
             }
             </div>

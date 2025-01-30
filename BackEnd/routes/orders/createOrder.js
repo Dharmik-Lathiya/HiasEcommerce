@@ -1,6 +1,6 @@
 const OrderSchema = require("../../models/ordes");
 const productSchema = require("../../models/products");
-
+const UserSchema = require("../../models/UserSchema")
 const createOrders = async (req,res)=>  {
 
         console.log(req.body);
@@ -19,15 +19,22 @@ const createOrders = async (req,res)=>  {
 
         const newOrder = new OrderSchema({...req.body,total:total})
         
-        newOrder.save().then(()=>{
-            res.status(200).send({
-                success:true,
-                message:"done"
+        const order = await newOrder.save();
+        if(order){
+            await UserSchema.findByIdAndUpdate(req.body.userId,{$push:{order:order._id}}).then(()=>{
+
+                return res.status(200).send({
+                    success:true,
+                    message:"done",
+                    
+                })
+
             })
             
-        }).catch((err) => {
-            res.status(400).send({success:false,message:err})
-        });
+         }else{
+             
+             return res.status(400).send({success:false,err:"something went wrong"})
+         }
 
 }
 

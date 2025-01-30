@@ -1,0 +1,49 @@
+import React, { useEffect, useState } from 'react'
+import { Navigate } from 'react-router-dom'
+import UserOrderList from './userOrderList';
+
+export default function UserProfile() {
+
+
+  if (!JSON.parse(localStorage.getItem('isLogedIn'))) {
+    return <Navigate to={"/"} />
+  }
+  const [data, setdata] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/userOrders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        userId: localStorage.getItem("userId")
+      })
+    }).then(res => {
+      res.json().then(data => {
+        setdata(data.orders)
+        console.log(data);
+
+      })
+    })
+  }, [])
+
+
+
+  return (
+    <div style={{ width: "100%" }}>
+    
+             <div className='prod-head p-5'>
+                    <p >Orders</p>
+            
+                  </div>
+                  <div>
+                {
+                    data.map((order) =>{
+                          return  <UserOrderList name={order.name} location={order.location} total={order.total}  products={order.products} quantity={order.quantity}/>
+                    })
+                }
+                </div>
+        </div>
+  )
+}
