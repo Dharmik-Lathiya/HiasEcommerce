@@ -60,7 +60,6 @@ useEffect(()=>{
         <Route path="/Categories" element={<CategoryPage products={allProducts} />}>
             <Route path="/Categories/:URLcategory" element={<CategoryPage products={allProducts} />}/>
         </Route>
-        <Route path="Orders/:productId" element={<OrderSummary products={allProducts} />}/>
         <Route path="/About-Us" element={<AboutUs />} />
         <Route path="/Contect-Us" element={<ContectUs />} />
 
