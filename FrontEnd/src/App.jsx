@@ -11,7 +11,9 @@ import ProductDetails from './Components/ProductsDetails/ProductDetails';
 import OrderSummary from './Components/OrderSummary';
 import { useEffect, useState } from 'react';
 import AddToCart from './Components/AddToCart';
-import Orders from './Components/adminPanel/orders/Orders';
+import CategoryPage from './Components/CategoryPage';
+import AboutUs from './Components/AboutUs';
+import ContectUs from './Components/ContectUs';
 
 
 
@@ -32,6 +34,7 @@ useEffect(()=>{
         )
     })
 },[])
+
   return (
     <>
       <Routes>
@@ -51,6 +54,16 @@ useEffect(()=>{
                 <Route path='addproducts' element={<AddProductsFrom />}/>
                 <Route path='products/:prodid' element={<AddProductsFrom />}/>
         </Route>
+        <Route path="/cart" element={<AddToCart/>}/>
+        <Route path="/trending" element={<TrandingProducts products={allProducts} />} />
+        <Route path="/product/:productId" element={<ProductDetails products={allProducts} />} />
+        <Route path="/Categories" element={<CategoryPage products={allProducts} />}>
+            <Route path="/Categories/:URLcategory" element={<CategoryPage products={allProducts} />}/>
+        </Route>
+        <Route path="Orders/:productId" element={<OrderSummary products={allProducts} />}/>
+        <Route path="/About-Us" element={<AboutUs />} />
+        <Route path="/Contect-Us" element={<ContectUs />} />
+
       </Routes>
     </>
   );
