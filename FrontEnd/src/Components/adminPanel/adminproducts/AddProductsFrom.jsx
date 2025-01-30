@@ -28,11 +28,13 @@ export default function AddProductsFrom(props) {
       
       for (let file of files) {
 
-          renderForimg.push(URL.createObjectURL(file))
-          setFlag(!flag)
-        const reader = new FileReader();
-        reader.onload = (file) => {
-          imgUrl.push(reader.result);
+          // renderForimg.push(URL.createObjectURL(file))
+          const reader = new FileReader();
+          reader.onload = (file) => {
+            imgUrl.push(reader.result);
+            console.log(imgUrl);
+            setFlag(!flag)
+          
         }
         reader.readAsDataURL(file);
 
