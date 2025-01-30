@@ -93,7 +93,7 @@ export default function ProductDetails({ products }) {
                   Add to Cart
                 </button>
                 <Link
-                                        to={`/Orders/${product._id}`}
+                                        to={`Orders/${product._id}`}
                                         className="text-blue-500 hover:underline"
                                     >
                 <button className="w-full bg-gray-700 text-white py-2 rounded-md hover:bg-gray-800">

@@ -11,6 +11,7 @@ import ProductDetails from './Components/ProductsDetails/ProductDetails';
 import OrderSummary from './Components/OrderSummary';
 import { useEffect, useState } from 'react';
 import AddToCart from './Components/AddToCart';
+import Orders from './Components/adminPanel/orders/Orders';
 
 
 
@@ -36,24 +37,20 @@ useEffect(()=>{
       <Routes>
         <Route index element={<HomePage products={allProducts}/>} />
         <Route path="/Login" element={<Login />} /> 
+        <Route path="product/:productId" element={<ProductDetails products={allProducts} />} />
+
+        <Route path="/cart" element={<AddToCart/>}/>
+        <Route path="/trending" element={<TrandingProducts products={allProducts} />} />
+        <Route path="Orders/:productId" element={<OrderSummary products={allProducts} />}/>
+
         {localStorage.getItem("isLogedIn") ?  <Route path="/admin" element={<Navigate to="/admin/dashboard"/>}  /> : <Route path='/admin' element={<Navigate to="/Login"/>}/>    }
         <Route path='/admin' element={<AdminPanel/>}>
                 <Route path='dashboard' element={<AdminDashboard />}/>
                 <Route path='products' element={<AdminProducts />}/>
-                
+                <Route path='orders' element={<Orders />}/>
                 <Route path='addproducts' element={<AddProductsFrom />}/>
                 <Route path='products/:prodid' element={<AddProductsFrom />}/>
-
-
         </Route>
-        <Route path="/cart" element={<AddToCart/>}/>
-        <Route path="/trending" element={<TrandingProducts products={allProducts} />} />
-        <Route path="/product/:productId" element={<ProductDetails products={allProducts} />} />
-        
-        
-        <Route path="Orders/:productId" element={<OrderSummary products={allProducts} />}/>
-
-
       </Routes>
     </>
   );
