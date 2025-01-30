@@ -5,26 +5,44 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck, faRotate, faCreditCard } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../Footer";
 import RecentlyViewed from "./RecentlyViewed";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import AddToCart from "../AddToCart";
 
 
 
 export default function ProductDetails({ products }) {
-  
+
   const { productId } = useParams();
-  
-  const product = products.find((p) => p._id == productId );
+
+  const product = products.find((p) => p._id == productId);
 
   if (!product) {
     return;
   }
-  
+
+ 
   // State to manage the currently displayed main image
   const [mainImage, setMainImage] = useState(product.imgUrl ? product.imgUrl[0] : "");
 
-  
+  function AddToCart() {
+    let cartCounter = localStorage.getItem("cartCounter")|| 0;
+    localStorage.setItem("cartCounter",parseInt(cartCounter) + 1);
+    let localCart = [];
+    let productArray = [];
+    
+if(localCart==null){
+      localCart.push(productArray);
+    }
+    else{
+      localCart=productArray;
+    }
 
-  return ( 
+    productArray.push(product);
+    
+    localStorage.setItem("Array",JSON.stringify(productArray));
+  }
+
+  return (
     <>
 
       <Header />
@@ -58,7 +76,7 @@ export default function ProductDetails({ products }) {
             <p className="text-gray-700 mb-4">{product.desc}</p>
             <div className="flex items-center space-x-4 mb-4">
               <p className="text-xl text-red-600 font-semibold">
-                Rs. {product.price - (product.price * 20)/100 }
+                Rs. {product.price - (product.price * 20) / 100}
               </p>
               <p className="line-through text-gray-500">Rs. {product.price}</p>
             </div>
@@ -95,16 +113,17 @@ export default function ProductDetails({ products }) {
                 />
               </div>
               <div className="space-y-2">
-                <button className="w-full bg-green-500 text-white py-2 my-2 rounded-md hover:bg-green-600">
+                <button className="w-full bg-green-500 text-white py-2 my-2 rounded-md hover:bg-green-600" onClick={AddToCart}>
                   Add to Cart
                 </button>
+
                 <Link
-                                        to={`Orders/${product._id}`}
-                                        className="text-blue-500 hover:underline"
-                                    >
-                <button className="w-full bg-gray-700 text-white py-2 rounded-md hover:bg-gray-800">
-                  Buy it Now
-                </button>
+                  to={`Orders/${product._id}`}
+                  className="text-blue-500 hover:underline"
+                >
+                  <button className="w-full bg-gray-700 text-white py-2 rounded-md hover:bg-gray-800">
+                    Buy it Now
+                  </button>
                 </Link>
               </div>
             </div>
@@ -144,8 +163,8 @@ export default function ProductDetails({ products }) {
           </div>
         </div>
       </div>
-      <RecentlyViewed products={products}  category={product.category}/>
-      <Footer/>
+      <RecentlyViewed products={products} category={product.category} />
+      <Footer />
     </>
   );
 }

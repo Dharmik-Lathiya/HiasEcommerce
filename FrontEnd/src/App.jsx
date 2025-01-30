@@ -14,6 +14,7 @@ import AddToCart from './Components/AddToCart';
 import CategoryPage from './Components/CategoryPage';
 import AboutUs from './Components/AboutUs';
 import ContectUs from './Components/ContectUs';
+import Orders from './Components/adminPanel/orders/Orders';
 
 function App() {
     const [allProducts,setAllProducts] = useState([]);
@@ -24,7 +25,7 @@ useEffect(()=>{
     }).then(res => {
         res.json().then(data => {
              setAllProducts(data)
-             console.log(allProducts);}
+            }
         )
     })
 },[])
