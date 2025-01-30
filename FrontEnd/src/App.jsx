@@ -15,6 +15,7 @@
   import AboutUs from './Components/AboutUs';
   import ContectUs from './Components/ContectUs';
   import Orders from './Components/adminPanel/orders/Orders';
+import UserProfile from './Components/userprofile/UserProfile';
 
 
   function App() {
@@ -36,11 +37,7 @@
         <Routes>
           <Route index element={<HomePage products={allProducts}/>} />
           <Route path="/Login" element={<Login />} /> 
-          <Route path="product/:productId" element={<ProductDetails products={allProducts} />} />
-
-          <Route path="/Cart" element={<AddToCart/>}/>
-          <Route path="/trending" element={<TrandingProducts products={allProducts} />} />
-          <Route path="Orders/:productId" element={<OrderSummary products={allProducts} />}/>
+          <Route path="Orders/:productId/:quantity" element={<OrderSummary products={allProducts} />}/>
 
           {localStorage.getItem("isLogedIn") ?  <Route path="/admin" element={<Navigate to="/admin/dashboard"/>}  /> : <Route path='/admin' element={<Navigate to="/Login"/>}/>    }
           <Route path='/admin' element={<AdminPanel/>}>
@@ -57,7 +54,12 @@
               <Route path="/Categories/:URLcategory" element={<CategoryPage products={allProducts} />}/>
           </Route>
           <Route path="/About-Us" element={<AboutUs />} />
+<<<<<<< HEAD
           <Route path="/Contact-Us" element={<ContectUs />} />
+=======
+          <Route path="/Contect-Us" element={<ContectUs />} />
+          <Route path="/user" element={<UserProfile />} />
+>>>>>>> 5f9ef68bdaf5cda2ebe1ca534f3c74a552d9ea05
 
         </Routes>
       </>

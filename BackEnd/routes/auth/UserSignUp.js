@@ -12,7 +12,8 @@ const UserSignUp = async (req,res)=>{
                 
             } catch (error) {
                 
-                return res.status(400).send({success:false,message:error.message});
+                return res.status(400).send({success:false,message:error.message,isAdmin:false
+                });
             }
 
             await bcrypt.hash(req.body.password, 10).then((hash)=>{
@@ -21,20 +22,26 @@ const UserSignUp = async (req,res)=>{
             
            const NewUser = new User(req.body);
 
-                NewUser.save().then(()=>{
-                    res.status(200).send({
+                const user = await NewUser.save()
+
+                if(user){
+                   return res.status(200).send({
                         success:true,
-                        message:"done"
+                        message:"done",
+                        isAdmin:false,
+                        userId:user._id
                     })
+                }else{
                     
-                }).catch((err) => {
-                    res.status(400).send({success:false,message:err})
-                });
-            
+                    return res.status(400).send({success:false,isAdmin:false})
+                }
+
+
         }else{
-            res.status(400).send({
+           return res.status(400).send({
                 success:false,
-                message:"User Alredy Exist"
+                message:"User Alredy Exist",
+                isAdmin:false
             })
         }
 
