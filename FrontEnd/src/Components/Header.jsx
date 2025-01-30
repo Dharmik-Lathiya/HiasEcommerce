@@ -7,6 +7,8 @@ const Header = () => {
   const [showSubmenu, setShowSubmenu] = useState(false);
   const [submenuTimeout, setSubmenuTimeout] = useState(null);
 
+  let cartCounter = localStorage.getItem("cartCounter");
+
   useEffect(() => {
     const handleScroll = () => {
       setIsFixed(window.scrollY > 100);
@@ -63,7 +65,7 @@ const Header = () => {
           <Link to="/cart">
             <button className="text-gray-600 relative">
               <i className="fas fa-shopping-cart"></i>
-              <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">1</span>
+              <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">{cartCounter}</span>
             </button>
           </Link>
         </div>
