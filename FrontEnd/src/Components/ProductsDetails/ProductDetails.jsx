@@ -27,23 +27,27 @@ export default function ProductDetails({ products }) {
   // State to manage the currently displayed main image
   const [mainImage, setMainImage] = useState(product.imgUrl ? product.imgUrl[0] : "");
 
-  function AddToCart() {
-    let cartCounter = localStorage.getItem("cartCounter")|| 0;
-    localStorage.setItem("cartCounter",parseInt(cartCounter) + 1);
-    let localCart = [];
-    let productArray = [];
-    
-if(localCart==null){
-      localCart.push(productArray);
-    }
-    else{
-      localCart=productArray;
-    }
 
-    productArray.push(product);
+  function AddToCart(product) {
+
+    let localCart = JSON.parse(localStorage.getItem("Array")) || [];
+    let Quantity = document.getElementById("quantity").value;
     
-    localStorage.setItem("Array",JSON.stringify(productArray));
-  }
+    product["Quantity"] = Quantity;
+    
+    localCart.push(product);
+
+    localStorage.setItem("Array", JSON.stringify(localCart));
+
+    let cartCounter = parseInt(localStorage.getItem("cartCounter")) || 0;
+    localStorage.setItem("cartCounter", cartCounter + 1);
+
+    
+
+    console.log("Product added to cart:", Quantity, product);
+}
+
+
 
   return (
     <>
@@ -116,7 +120,7 @@ if(localCart==null){
                 />
               </div>
               <div className="space-y-2">
-                <button className="w-full bg-green-500 text-white py-2 my-2 rounded-md hover:bg-green-600" onClick={AddToCart}>
+                <button className="w-full bg-green-500 text-white py-2 my-2 rounded-md hover:bg-green-600" onClick={() => AddToCart(product)}>
                   Add to Cart
                 </button>
 

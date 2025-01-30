@@ -62,7 +62,7 @@ const Header = () => {
             <i className="far fa-heart"></i>
             <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
           </button>
-          <Link to="/cart">
+          <Link to="/Cart">
             <button className="text-gray-600 relative">
               <i className="fas fa-shopping-cart"></i>
               <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">{cartCounter}</span>

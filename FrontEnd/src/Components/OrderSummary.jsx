@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "./Header";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
 import Footer from "./Footer";
 
 export default function OrderSummary({ products }) {
