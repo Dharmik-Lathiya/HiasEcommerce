@@ -15,12 +15,6 @@ import CategoryPage from './Components/CategoryPage';
 import AboutUs from './Components/AboutUs';
 import ContectUs from './Components/ContectUs';
 
-
-
-
-
-
-
 function App() {
     const [allProducts,setAllProducts] = useState([]);
     

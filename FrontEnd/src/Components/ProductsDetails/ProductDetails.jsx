@@ -15,8 +15,14 @@ export default function ProductDetails({ products }) {
   
   const product = products.find((p) => p._id == productId );
 
+  if (!product) {
+    return;
+  }
+  
   // State to manage the currently displayed main image
-  const [mainImage, setMainImage] = useState(product.imgUrl[0]);
+  const [mainImage, setMainImage] = useState(product.imgUrl ? product.imgUrl[0] : "");
+
+  
 
   return ( 
     <>

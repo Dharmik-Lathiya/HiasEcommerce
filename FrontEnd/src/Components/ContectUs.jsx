@@ -53,7 +53,7 @@ export default function ContectUs() {
       <div className="mt-10">
         <iframe
           className="w-full h-80 rounded-lg shadow-lg"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117837.38273020869!2d72.78648501324403!3d21.17024051196026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04fc2b1b9b6cd%3A0x2c3f0aeca2b4a5a2!2sSurat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1642067634189!5m2!1sen!2sin"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d236295.21073169226!2d70.65647874048355!3d22.273721551410432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3959c98ac71cdf0f%3A0x76dd15cfbe93ad3b!2sRajkot%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1738251918710!5m2!1sen!2sin"
           allowFullScreen=""
           loading="lazy"
         ></iframe>
