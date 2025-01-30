@@ -26,32 +26,33 @@ function SwipeToSlide() {
     ];
 
     const settings = {
-        className: "center",
         infinite: true,
-        centerPadding: "20px",
-        slidesToShow: 4, // 7-8 slides on large screens
         swipeToSlide: true,
+        arrows: false, // Hide arrows for cleaner mobile UI
+        autoplay: true,
+        autoplaySpeed: 3000,
+        slidesToShow: 4,
         responsive: [
             {
-                breakpoint: 1280, // Large screens
+                breakpoint: 1280, 
                 settings: {
                     slidesToShow: 6,
                 },
             },
             {
-                breakpoint: 1024, // Medium screens (tablets)
+                breakpoint: 1024, 
                 settings: {
-                    slidesToShow: 6,
+                    slidesToShow: 5,
                 },
             },
             {
-                breakpoint: 768, // Small screens
+                breakpoint: 768, 
                 settings: {
-                    slidesToShow: 4,
+                    slidesToShow: 3,
                 },
             },
             {
-                breakpoint: 480, // Extra small screens (mobiles)
+                breakpoint: 480, 
                 settings: {
                     slidesToShow: 2,
                 },
@@ -60,29 +61,27 @@ function SwipeToSlide() {
     };
 
     return (
-        <>
-            <div className="ml-5 my-12 text-3xl font-semibold">
-                <p>Collection List</p>
-            </div>
-            <div className="slider-container px-3">
+        <div className="px-4 md:px-8 lg:px-16 my-10">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-center">
+                Collection List
+            </h2>
+            <div className="slider-container">
                 <Slider {...settings}>
                     {Menscasualwear.map((item, index) => (
                         <div
                             key={index}
-                            className="text-center flex flex-col items-center space-y-3 px-3"
+                            className="text-center flex flex-col items-center justify-items-center space-y-2 px-2"
                         >
-                            {/* Rounded Full Image */}
                             <img
                                 src={item.imgUrl}
                                 alt={item.CategoryName}
-                                className="w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full object-cover mx-auto shadow-lg"
+                                className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-36 lg:h-36 rounded-full object-cover shadow-md transition-transform duration-300 hover:scale-105"
                             />
-                            {/* Category Name and Item Count */}
                             <div>
-                                <p className="text-gray-800 font-semibold text-sm lg:text-base">
+                                <p className="text-gray-900 font-medium text-xs sm:text-sm lg:text-base">
                                     {item.CategoryName}
                                 </p>
-                                <p className="text-gray-500 text-xs lg:text-sm">
+                                <p className="text-gray-500 text-xs sm:text-sm">
                                     {item.Items} Items
                                 </p>
                             </div>
@@ -90,7 +89,7 @@ function SwipeToSlide() {
                     ))}
                 </Slider>
             </div>
-        </>
+        </div>
     );
 }
 

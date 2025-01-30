@@ -180,3 +180,25 @@ form .btn input[type="submit"]{
   font-weight: 500;
   cursor: pointer;
 }
+.popup-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  z-index: 1000;
+  text-align: center;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.success {
+  background-color: #28a745;
+  color: white;
+}
+
+.error {
+  background-color: #dc3545;
+  color: white;
+}

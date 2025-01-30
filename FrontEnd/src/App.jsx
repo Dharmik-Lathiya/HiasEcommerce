@@ -57,7 +57,7 @@
               <Route path="/Categories/:URLcategory" element={<CategoryPage products={allProducts} />}/>
           </Route>
           <Route path="/About-Us" element={<AboutUs />} />
-          <Route path="/Contect-Us" element={<ContectUs />} />
+          <Route path="/Contact-Us" element={<ContectUs />} />
 
         </Routes>
       </>

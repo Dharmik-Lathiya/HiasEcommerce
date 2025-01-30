@@ -85,8 +85,8 @@ export default function Login() {
     };
 }, []);
     return (
-    <div className="Login-container">
-      <div className="wrapper">
+    <div className="Login-container "> 
+      <div className="wrapper content-center items-center p-10 h-screen ">
     <div className="title-text">
       <div className="title login">Login Form</div>
       <div className="title signup">Signup Form</div>

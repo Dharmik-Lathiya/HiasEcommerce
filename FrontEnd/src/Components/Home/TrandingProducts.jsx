@@ -10,92 +10,99 @@ export default function TrandingProducts(props) {
 
   return (
     <>
-      <h2 className="mt-10 lg:mt-44 lg:ml-5 text-4xl font-semibold">
+      <h2 className="mt-10 text-center md:text-left lg:ml-5 text-3xl md:text-4xl font-semibold">
         Trending Products
       </h2>
 
-      <div className="my-6 ml-6 gap-6 text-2xl flex flex-wrap">
+      {/* Category Selection */}
+      <div className="my-6 mx-4 md:mx-6 grid grid-cols-2 sm:flex flex-wrap gap-4 text-lg md:text-2xl">
         <span
-          className="hover:text-green-600 hover:underline cursor-pointer"
+          className={`cursor-pointer ${
+            selectedCategory === "Menswear" ? "text-green-600 font-semibold underline" : "hover:text-green-600 hover:underline"
+          }`}
           onClick={() => setSelectedCategory("Menswear")}
         >
           Mens Casualwear
         </span>
         <span
-          className="hover:text-green-600 hover:underline cursor-pointer"
+          className={`cursor-pointer ${
+            selectedCategory === "Womenswear" ? "text-green-600 font-semibold underline" : "hover:text-green-600 hover:underline"
+          }`}
           onClick={() => setSelectedCategory("Womenswear")}
         >
           Womens Westernwear
         </span>
         <span
-          className="hover:text-green-600 hover:underline cursor-pointer"
+          className={`cursor-pointer ${
+            selectedCategory === "kidwear" ? "text-green-600 font-semibold underline" : "hover:text-green-600 hover:underline"
+          }`}
           onClick={() => setSelectedCategory("kidwear")}
         >
           Sportswear
         </span>
         <span
-          className="hover:text-green-600 hover:underline cursor-pointer"
+          className={`cursor-pointer ${
+            selectedCategory === "sports" ? "text-green-600 font-semibold underline" : "hover:text-green-600 hover:underline"
+          }`}
           onClick={() => setSelectedCategory("sports")}
         >
           Officewear
         </span>
       </div>
 
-      <div className="my-5 flex flex-wrap">
+      {/* Products Grid */}
+      <div className="my-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-4">
         {filteredProducts.map((product, i) => (
           <div
             key={i}
-            className="ml-[2vw] w-full sm:w-72 bg-white rounded-lg shadow-2xl h-auto my-5 group relative"
+            className="bg-white rounded-lg shadow-lg overflow-hidden group relative transition-all duration-300"
           >
-            <span className="bg-green-600 px-4 py-2 absolute m-3 text-slate-100 rounded-tl-lg rounded-br-lg">
+            {/* Sale Badge */}
+            <span className="bg-green-600 px-3 py-1 absolute top-3 left-3 text-white text-sm rounded-tl-lg rounded-br-lg">
               Sale
             </span>
-            <div className="relative overflow-hidden">
-              <Link to={`/product/${product._id}`} className="text-blue-500 hover:underline">
+
+            {/* Product Image */}
+            <div className="relative box-border">
+              <Link to={`/product/${product._id}`}>
                 <img
-                  className="w-72 h-72 box-border rounded-tl-lg rounded-tr-lg transition-transform duration-300 group-hover:scale-110"
+                  className="w-full h-52 md:h-64 lg:h-72 object-cover transition-transform duration-300 group-hover:scale-110"
                   src={product.imgUrl[0]}
                   alt={product.name}
                 />
               </Link>
 
               {/* Add to Cart & Like Button on Hover */}
-              <button className="absolute top-4 right-4 bg-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 translate-x-6 group-hover:translate-x-0 transition-all duration-300">
+              <button className="absolute top-4 right-4 bg-white p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-all duration-300">
                 ❤️
               </button>
 
-              <button className="absolute p-10 bottom-0 w-full left-1/2 transform -translate-x-1/2 translate-y-6 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 bg-green-600 text-white px-6 py-2 transition-all duration-300 shadow-lg">
+              <button className="absolute bottom-0 w-full bg-green-600 text-white py-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
                 Add to Cart
               </button>
             </div>
 
-            <div className="p-5 font-poppins">
-              <div className="flex justify-between items-center">
-                <h3 className="font-semibold">{product.name}</h3>
+            {/* Product Info */}
+            <div className="p-4">
+              <h3 className="font-semibold text-lg">{product.name}</h3>
+              <p className="text-gray-600 text-sm mt-2">
+                {product.desc.slice(0, 50) + "..."}
+              </p>
+
+              <div className="flex justify-between items-center mt-3">
+                <h5 className="text-sm text-gray-600">Hias</h5>
+                <span className="text-sm text-slate-400">Stock: {product.stock}</span>
               </div>
 
-              <div className="mt-2 text-sm text-gray-600">
-                <p>{product.desc.slice(0, 50) + " . . ."}</p>
-              </div>
-
-              <div className="mt-4 text-sm text-gray-600">
-                <h5 className="mt-2 font-semibold">Hias</h5>
-              </div>
-
+              {/* Price Section */}
               <div className="flex items-center mt-2">
-                <div>
-                  <span className="font-semibold text-lg">₹</span>
-                  <span className="font-bold text-2xl">
-                    {product.price - (product.price * 20) / 100}
-                  </span>
-                </div>
-                <div>
-                  <span className="text-gray-400 line-through ml-2">
-                    ₹{product.price}
-                  </span>
-                </div>
+                <span className="font-bold text-xl text-green-600">
+                  ₹{product.price - (product.price * 20) / 100}
+                </span>
+                <span className="text-gray-400 line-through ml-2">₹{product.price}</span>
               </div>
 
+              {/* Star Rating */}
               <div className="flex space-x-1 mt-2">
                 {[5, 4, 3, 2, 1].map((val) => (
                   <span
@@ -107,9 +114,6 @@ export default function TrandingProducts(props) {
                     &#9733;
                   </span>
                 ))}
-                <span className="text-slate-400 ml-auto">
-                  In Stock {product.stock} Items
-                </span>
               </div>
             </div>
           </div>
