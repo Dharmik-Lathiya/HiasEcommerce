@@ -38,7 +38,7 @@
           <Route path="/Login" element={<Login />} /> 
           <Route path="product/:productId" element={<ProductDetails products={allProducts} />} />
 
-          <Route path="/cart" element={<AddToCart/>}/>
+          <Route path="/Cart" element={<AddToCart/>}/>
           <Route path="/trending" element={<TrandingProducts products={allProducts} />} />
           <Route path="Orders/:productId" element={<OrderSummary products={allProducts} />}/>
 

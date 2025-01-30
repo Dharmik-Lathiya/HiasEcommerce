@@ -1,8 +1,16 @@
 import React from 'react'
 import Header from './Header'
-import OrderSummary from './OrderSummary'
+
 
 export default function () {
+
+let product = JSON.parse(localStorage.getItem("Array")) || [];
+let total = 0;
+
+product.map((product) => (
+    total = (product.price*product.Quantity) + total
+))
+
   return (
     <div>
       <Header/>
@@ -77,17 +85,6 @@ export default function () {
           </div>
         </div>
 
-        {/* Shipping Method */}
-        <div className="mb-6">
-          <h2 className="text-lg font-semibold mb-2">Shipping method</h2>
-          <input
-            type="text"
-            placeholder="Enter shipping address to view available shipping methods"
-            className="w-full p-3 border border-gray-300 rounded-md bg-gray-100"
-            disabled
-          />
-        </div>
-
         {/* Payment Section */}
         <div className="mb-6">
           <h2 className="text-lg font-semibold mb-2">Payment</h2>
@@ -111,7 +108,9 @@ export default function () {
       {/* Right Section - Order Summary */}
       <div className="w-full lg:w-1/3 bg-white p-6 rounded-lg shadow-md mt-6 lg:mt-0">
         <h2 className="text-lg font-semibold mb-4">Order Summary</h2>
-        <div className="flex items-center space-x-4 border p-5 rounded-2xl">
+        {product.map((product) => (
+          <div>
+        <div className="my-4 flex items-center space-x-4 border p-5 rounded-2xl">
           <img
             src={product.imgUrl[0]}
             alt="Product"
@@ -121,28 +120,21 @@ export default function () {
             <p className="text-gray-700">{product.name}</p>
             <p className="text-gray-500">{product.desc.slice(0,50)+" . . ."}</p>
           </div>
-          <span className="ml-auto font-semibold">{product.price}</span>
+          <span className="ml-auto font-semibold">{product.price} x {product.Quantity}</span>
         </div>
 
-        <div className="border-t my-4"></div>
-
-        <div className="flex justify-between text-gray-700">
-          <span>Subtotal</span>
-          <span>{product.price}</span>
         </div>
-
-        <div className="flex justify-between text-gray-700 mt-2">
-          <span>Shipping</span>
-          <span>Enter shipping address</span>
-        </div>
+        
+        ))}
 
         <div className="border-t my-4"></div>
 
         <div className="flex justify-between font-semibold text-lg">
           <span>Total</span>
-          <span>₹1,199.00</span>
+          <span>{total}</span>
         </div>
       </div>
+      
     </div>
     </div>
   )
