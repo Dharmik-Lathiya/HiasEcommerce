@@ -1,12 +1,21 @@
 import React from "react";
 import Header from "./Header";
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 import Footer from "./Footer";
 
 export default function OrderSummary({ products }) {
     const { productId } = useParams();
     const product = products.find((p) => p._id === productId);
     
+  if (!product) {
+      return;
+    }
+  
+   
+    // State to manage the currently displayed main image
+  
+
   return (
     <>
     <Header/>

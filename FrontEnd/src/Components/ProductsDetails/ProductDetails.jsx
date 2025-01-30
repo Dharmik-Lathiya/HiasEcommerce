@@ -44,7 +44,6 @@ if(localCart==null){
 
   return (
     <>
-
       <Header />
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -118,7 +117,7 @@ if(localCart==null){
                 </button>
 
                 <Link
-                  to={`Orders/${product._id}`}
+                  to={`/Orders/${productId}`}
                   className="text-blue-500 hover:underline"
                 >
                   <button className="w-full bg-gray-700 text-white py-2 rounded-md hover:bg-gray-800">
