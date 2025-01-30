@@ -21,6 +21,9 @@ export default function ProductDetails({ products }) {
   }
 
  
+  let [quantity,setQuantity] = useState(1);
+  console.log(quantity);
+  
   // State to manage the currently displayed main image
   const [mainImage, setMainImage] = useState(product.imgUrl ? product.imgUrl[0] : "");
 
@@ -109,6 +112,7 @@ if(localCart==null){
                   min="1"
                   defaultValue="1"
                   className="border rounded-md w-16 px-2 py-1"
+                  onChange={(e)=>{setQuantity(e.target.value)}}
                 />
               </div>
               <div className="space-y-2">
@@ -117,10 +121,10 @@ if(localCart==null){
                 </button>
 
                 <Link
-                  to={`/Orders/${productId}`}
+                  to={`/Orders/${productId}/${quantity}`}
                   className="text-blue-500 hover:underline"
                 >
-                  <button className="w-full bg-gray-700 text-white py-2 rounded-md hover:bg-gray-800">
+                  <button className="w-full bg-gray-700 text-white py-2 rounded-md hover:bg-gray-800" onClick={()=>{quantity = document.getElementById("quantity").value}}>
                     Buy it Now
                   </button>
                 </Link>

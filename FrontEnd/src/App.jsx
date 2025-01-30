@@ -36,11 +36,7 @@
         <Routes>
           <Route index element={<HomePage products={allProducts}/>} />
           <Route path="/Login" element={<Login />} /> 
-          <Route path="product/:productId" element={<ProductDetails products={allProducts} />} />
-
-          <Route path="/cart" element={<AddToCart/>}/>
-          <Route path="/trending" element={<TrandingProducts products={allProducts} />} />
-          <Route path="Orders/:productId" element={<OrderSummary products={allProducts} />}/>
+          <Route path="Orders/:productId/:quantity" element={<OrderSummary products={allProducts} />}/>
 
           {localStorage.getItem("isLogedIn") ?  <Route path="/admin" element={<Navigate to="/admin/dashboard"/>}  /> : <Route path='/admin' element={<Navigate to="/Login"/>}/>    }
           <Route path='/admin' element={<AdminPanel/>}>

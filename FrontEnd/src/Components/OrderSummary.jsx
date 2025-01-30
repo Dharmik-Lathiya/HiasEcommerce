@@ -5,7 +5,7 @@ import { useState } from "react";
 import Footer from "./Footer";
 
 export default function OrderSummary({ products }) {
-    const { productId } = useParams();
+    const { productId , quantity} = useParams();
     const product = products.find((p) => p._id === productId);
     
   if (!product) {
@@ -13,14 +13,58 @@ export default function OrderSummary({ products }) {
     }
   
    
-    // State to manage the currently displayed main image
-  
+    const [formData,setFormData] = useState({
+      name:"",
+      address:"",
+      products:[productId],
+      quantity:[Number(quantity)],
+      date:""
+
+    })
+
+    function submit(e){
+      let date = new Date().toISOString().slice(0, 10)
+
+      e.preventDefault();
+
+      
+
+      setFormData({
+        name:e.target[3].value + " " + e.target[4].value,
+        address:e.target[5].value + " " + e.target[6].value + " " +e.target[7].value + " " + e.target[8].value + " " + e.target[9].value,
+        date: date,
+        
+      products:[productId],
+      quantity:[Number(quantity)],
+      })
+      
+      
+      fetch("http://localhost:3000/buy",{
+        method:"POST",
+        headers:{
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name:e.target[3].value + " " + e.target[4].value,
+        location:e.target[5].value + " " + e.target[6].value + " " +e.target[7].value + " " + e.target[8].value + " " + e.target[9].value,
+        date: date,
+        
+      products:[productId],
+      quantity:[Number(quantity)],
+        })
+      }).then((res)=>{
+          res.json().then(data =>{
+            console.log(data);
+          })
+        })  
+    }
 
   return (
     <>
     <Header/>
     <div className="flex flex-col lg:flex-row justify-between p-6 bg-gray-100 min-h-screen">
       {/* Left Section - Checkout Form */}
+        <form onSubmit={submit}>
       <div className="w-full lg:w-2/3 bg-white p-6 rounded-lg shadow-md">
         {/* Contact Section */}
         <div className="mb-6">
@@ -120,6 +164,7 @@ export default function OrderSummary({ products }) {
           Complete order
         </button>
       </div>
+      </form>
 
       {/* Right Section - Order Summary */}
       <div className="w-full lg:w-1/3 bg-white p-6 rounded-lg shadow-md mt-6 lg:mt-0">
