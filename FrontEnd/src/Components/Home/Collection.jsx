@@ -5,33 +5,23 @@ function SwipeToSlide() {
     const Menscasualwear = [
         {
             imgUrl: "src/assets/Product_1.jpg",
-            CategoryName: "Mens Casualwear 1",
+            CategoryName: "Mens Wear",
             Items: 20,
         },
         {
             imgUrl: "src/assets/Product_1.jpg",
-            CategoryName: "WoMens Casualwear 1",
+            CategoryName: "Womens Wear",
             Items: 220,
         },
         {
             imgUrl: "src/assets/Product_1.jpg",
-            CategoryName: "Mens 1",
+            CategoryName: "Kids Wear",
             Items: 230,
         },
         {
             imgUrl: "src/assets/Product_2.jpg",
-            CategoryName: "WOMEB Mens Casualwear 1",
+            CategoryName: "Sports Wear",
             Items: 260,
-        },
-        {
-            imgUrl: "src/assets/Product_2.jpg",
-            CategoryName: "ns Casualwear 1",
-            Items: 20,
-        },
-        {
-            imgUrl: "src/assets/Product_4.png",
-            CategoryName: "OMens Casualwear 1",
-            Items: 50,
         },
     ];
 
@@ -39,7 +29,7 @@ function SwipeToSlide() {
         className: "center",
         infinite: true,
         centerPadding: "20px",
-        slidesToShow: 6, // 7-8 slides on large screens
+        slidesToShow: 4, // 7-8 slides on large screens
         swipeToSlide: true,
         responsive: [
             {
