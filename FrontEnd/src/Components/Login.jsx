@@ -27,8 +27,15 @@ export default function Login() {
         res.json().then(data =>{
           console.log(data);
           
-          data.success ?( localStorage.setItem("isLogedIn",data.success) ,navigate('/admin') ) : localStorage.setItem("isLogedIn",data.success)
-        
+          if(data.success){
+            localStorage.setItem("isLogedIn",data.success);
+            localStorage.setItem("isAdmin",data.isAdmin);
+            localStorage.setItem("userId",data.userId);
+            navigate('/admin')
+          }else{
+            localStorage.setItem("isLogedIn",data.success);
+            localStorage.setItem("isAdmin",data.isAdmin);
+          }        
           
         })
         
@@ -54,9 +61,18 @@ export default function Login() {
         body: JSON.stringify(formData)
       }).then((res)=>{
           res.json().then(data =>{
+            console.log(data);
             
-            data.success ?( localStorage.setItem("isLogedIn",data.success) ,navigate('/admin') ) : localStorage.setItem("isLogedIn",data.success)
 
+            if(data.success){
+              localStorage.setItem("isLogedIn",data.success);
+              localStorage.setItem("isAdmin",data.isAdmin);
+              localStorage.setItem("userId",data.userId);
+              navigate('/user')
+            }else{
+              localStorage.setItem("isLogedIn",data.success);
+              localStorage.setItem("isAdmin",data.isAdmin);
+            }
             
           })
           

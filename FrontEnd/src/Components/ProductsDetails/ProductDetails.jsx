@@ -16,10 +16,12 @@ export default function ProductDetails({ products }) {
   const product = products.find((p) => p._id == productId );
 
   // State to manage the currently displayed main image
+  
   const [mainImage, setMainImage] = useState(product.imgUrl[0]);
+  
 
   return ( 
-    <>
+     <>
 
       <Header />
       <div className="max-w-7xl mx-auto px-4 py-8">

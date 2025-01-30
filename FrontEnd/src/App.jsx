@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes, Route, Navigate } from "react-router";
+import { Routes, Route, Navigate, useLocation } from "react-router";
 import HomePage from './Components/HomePage';
 import Login from './Components/Login';
 import AdminPanel from './Components/adminPanel/adminPanel';
@@ -14,6 +14,7 @@ import AddToCart from './Components/AddToCart';
 import CategoryPage from './Components/CategoryPage';
 import AboutUs from './Components/AboutUs';
 import ContectUs from './Components/ContectUs';
+import Orders from './Components/adminPanel/orders/Orders'
 
 
 
@@ -23,7 +24,7 @@ import ContectUs from './Components/ContectUs';
 
 function App() {
     const [allProducts,setAllProducts] = useState([]);
-    
+    let location = useLocation()    
 useEffect(()=>{
     fetch("http://localhost:3000/admin/allProducts",{
         method:"POST"
@@ -39,18 +40,14 @@ useEffect(()=>{
     <>
       <Routes>
         <Route index element={<HomePage products={allProducts}/>} />
-        <Route path="/Login" element={<Login />} /> 
-        <Route path="product/:productId" element={<ProductDetails products={allProducts} />} />
+        <Route path="/Login" element={<Login />} />
 
-        <Route path="/cart" element={<AddToCart/>}/>
-        <Route path="/trending" element={<TrandingProducts products={allProducts} />} />
-        <Route path="Orders/:productId" element={<OrderSummary products={allProducts} />}/>
-
-        {localStorage.getItem("isLogedIn") ?  <Route path="/admin" element={<Navigate to="/admin/dashboard"/>}  /> : <Route path='/admin' element={<Navigate to="/Login"/>}/>    }
+        
+        
         <Route path='/admin' element={<AdminPanel/>}>
                 <Route path='dashboard' element={<AdminDashboard />}/>
                 <Route path='products' element={<AdminProducts />}/>
-                <Route path='orders' element={<Orders />}/>
+                <Route path='orders' element={<Orders/>}/>
                 <Route path='addproducts' element={<AddProductsFrom />}/>
                 <Route path='products/:prodid' element={<AddProductsFrom />}/>
         </Route>

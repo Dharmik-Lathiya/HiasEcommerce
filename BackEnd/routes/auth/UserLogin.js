@@ -12,13 +12,29 @@ const UserLogin = async (req,res)=>{
             
             const match = await bcrypt.compare(req.body.password, ExistingUser.password);
             if(match){
+
+                if(ExistingUser.email == "jay123@gmail.com"){
+                   return res.status(200).send({
+                        success:true,
+                        userId:ExistingUser._id,
+                        isAdmin:true
+                    })
+
+                }
                 res.status(200).send({
-                    success:true
+                    success:true,
+                    userId:ExistingUser._id,
+                    isAdmin:false
                 })
+
+
+                
             }else{
                 res.status(400).send({
                     success:false,
-                    message:"Password is wrong"
+                    message:"Password is wrong",
+                    isAdmin:false
+
                 })
             }
 
@@ -27,7 +43,9 @@ const UserLogin = async (req,res)=>{
 
             res.status(400).send({
                 success:false,
-                message:"Email does not  exisst"
+                message:"Email does not  exisst",
+                isAdmin:false
+
         })
         }
 
