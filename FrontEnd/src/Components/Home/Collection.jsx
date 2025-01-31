@@ -5,22 +5,22 @@ import {Link} from "react-router-dom";
 function SwipeToSlide() {
     const Menscasualwear = [
         {
-            imgUrl: "src/assets/Product_1.jpg",
+            imgUrl: "src/assets/Category_banner_1.jpg",
             CategoryName: "Menswear",
             Items: 20,
         },
         {
-            imgUrl: "src/assets/Product_1.jpg",
+            imgUrl: "src/assets/Category_banner_2.jpg",
             CategoryName: "Womenswear",
             Items: 220,
         },
         {
-            imgUrl: "src/assets/Product_1.jpg",
+            imgUrl: "src/assets/Category_banner_3.jpg",
             CategoryName: "kidwear",
             Items: 230,
         },
         {
-            imgUrl: "src/assets/Product_2.jpg",
+            imgUrl: "src/assets/Category_banner_4.jpg",
             CategoryName: "sports",
             Items: 260,
         },
