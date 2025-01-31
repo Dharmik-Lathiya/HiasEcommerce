@@ -41,6 +41,21 @@ function SwipeToSlide({ products }) {
     ],
   };
 
+  function AddToCart(product, quantity) {
+    let localCart = JSON.parse(localStorage.getItem("Array")) || [];
+
+    product["Quantity"] = quantity || 1;
+
+    localCart.push(product);
+
+    localStorage.setItem("Array", JSON.stringify(localCart));
+
+    let cartCounter = parseInt(localStorage.getItem("cartCounter")) || 0;
+    localStorage.setItem("cartCounter", cartCounter + 1);
+
+    console.log("Product added to cart:", quantity, product);
+}
+
   // Filter products based on category
   let filteredProducts = products.filter(
     (product) => product.category === "Womenswear"
@@ -83,7 +98,10 @@ function SwipeToSlide({ products }) {
                   </button>
 
                   {/* Add to Cart Button */}
-                  <button className="absolute bottom-0 w-full left-1/2 transform -translate-x-1/2 translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 bg-green-600 text-white px-6 py-2 transition-all duration-300 shadow-lg">
+                  <button className="absolute bottom-0 w-full left-1/2 transform -translate-x-1/2 translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 bg-green-600 text-white px-6 py-2 transition-all duration-300 shadow-lg" onClick={(e) => {
+                                        let quantity = 1;
+                                        AddToCart(product, quantity);
+                                    }}>
                     Add to Cart
                   </button>
                 </div>

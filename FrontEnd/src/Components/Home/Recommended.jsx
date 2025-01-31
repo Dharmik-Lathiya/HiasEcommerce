@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Recommended(props) {
     const [selectedCategory, setSelectedCategory] = useState('Menswear');
@@ -48,11 +49,13 @@ export default function Recommended(props) {
                         className="ml-[2vw] flex w-full sm:w-72 md:w-80 lg:w-[47%] bg-white rounded-lg shadow-xl h-auto my-5"
                     >
                         <div>
+                            <Link to={`/product/${product._id}`}>
                             <img
                                 className="w-36 h-full box-border rounded-tl-lg rounded-tr-lg"
                                 src={product.imgUrl[0]}
                                 alt={product.name}
                             />
+                            </Link>
                         </div>
                         <div className="p-5 font-poppins">
                             <div className="flex justify-between items-center">

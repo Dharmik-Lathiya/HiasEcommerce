@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header.jsx';
 import { Link,useParams  } from 'react-router-dom';
 import Footer from './Footer.jsx';
+import { useEffect } from 'react';
 
 export default function CategoryPage({ products }) {
 
@@ -15,6 +16,12 @@ export default function CategoryPage({ products }) {
         return product.category === URLcategory ? product : 0;
     });
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 100);
+  });
 
   return (
     <>
