@@ -14,7 +14,7 @@ export default function ProuductList(props) {
       <div className='list m-10 bg-slate-100 p-2 rounded' data-id={props.id}>
 
         <p>{props.name}</p>
-        <p>${props.price}</p>
+        <p>₹{props.price}</p>
         <p>Sold : {props.sold || 0}</p>
         <p>total income : ${props.price * (props.sold || 0)}</p>
 
