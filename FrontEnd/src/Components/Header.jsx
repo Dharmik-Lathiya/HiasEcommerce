@@ -77,10 +77,7 @@ const Header = () => {
           <Link to={isLogedIn ? "/user" : "/Login"} className="text-gray-600">
             <i className="fas fa-user"></i>
           </Link>
-          <button className="text-gray-600 relative">
-            <i className="far fa-heart"></i>
-            <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
-          </button>
+         
           <Link to="/Cart">
             <button className="text-gray-600 relative">
               <i className="fas fa-shopping-cart"></i>
