@@ -16,7 +16,7 @@ const product = require("../models/products")
 
 
 route.get("/",(req,res)=>{
-        res.send("helllo")
+        res.send("good")
 })
 route.post('/user/singup',UserSignUp);
 route.post('/user/login',UserLogin);
@@ -30,10 +30,5 @@ route.post('/userOrders',userOrders);
 route.post('/OrderDetails',orderDetails);
 
 
-route.post("/deelte",async(req,res)=>{
-              await  product.deleteMany({category:{$in:["Womenswear","kidwear","sports"]}}).then(()=>{
-                res.status(200).send({sucses:true})
-              })
-})
 
 module.exports = route; 
