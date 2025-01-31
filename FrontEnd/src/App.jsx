@@ -19,7 +19,7 @@ import UserProfile from './Components/userprofile/UserProfile';
 
 
 function App() {
-  const [allProducts, setAllProducts] = useState([]);
+  
 
   useEffect(() => {
     fetch(import.meta.env.VITE_API_KEY+"/admin/allProducts", {
@@ -31,6 +31,8 @@ function App() {
       )
     })
   }, [])
+
+  const [allProducts, setAllProducts] = useState([]);
 
   return (
     <>
