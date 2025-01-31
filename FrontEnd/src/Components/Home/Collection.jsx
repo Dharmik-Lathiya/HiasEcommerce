@@ -1,26 +1,27 @@
 import React from "react";
 import Slider from "react-slick";
+import {Link} from "react-router-dom";
 
 function SwipeToSlide() {
     const Menscasualwear = [
         {
             imgUrl: "src/assets/Product_1.jpg",
-            CategoryName: "Mens Wear",
+            CategoryName: "Menswear",
             Items: 20,
         },
         {
             imgUrl: "src/assets/Product_1.jpg",
-            CategoryName: "Womens Wear",
+            CategoryName: "Womenswear",
             Items: 220,
         },
         {
             imgUrl: "src/assets/Product_1.jpg",
-            CategoryName: "Kids Wear",
+            CategoryName: "kidwear",
             Items: 230,
         },
         {
             imgUrl: "src/assets/Product_2.jpg",
-            CategoryName: "Sports Wear",
+            CategoryName: "sports",
             Items: 260,
         },
     ];
@@ -72,11 +73,13 @@ function SwipeToSlide() {
                             key={index}
                             className="text-center flex flex-col items-center justify-items-center space-y-2 px-2"
                         >
+                            <Link to={`/Categories/${item.CategoryName}`}>
                             <img
                                 src={item.imgUrl}
                                 alt={item.CategoryName}
                                 className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-36 lg:h-36 rounded-full object-cover shadow-md transition-transform duration-300 hover:scale-105"
                             />
+                            </Link>
                             <div>
                                 <p className="text-gray-900 font-medium text-xs sm:text-sm lg:text-base">
                                     {item.CategoryName}

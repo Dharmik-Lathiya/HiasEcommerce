@@ -6,6 +6,20 @@ import { Link } from "react-router-dom";
 
 export default function RecentlyViewed({products,category}) {
 
+    function AddToCart(product, quantity) {
+        let localCart = JSON.parse(localStorage.getItem("Array")) || [];
+    
+        product["Quantity"] = quantity || 1;
+    
+        localCart.push(product);
+    
+        localStorage.setItem("Array", JSON.stringify(localCart));
+    
+        let cartCounter = parseInt(localStorage.getItem("cartCounter")) || 0;
+        localStorage.setItem("cartCounter", cartCounter + 1);
+    
+        console.log("Product added to cart:", quantity, product);
+    }
     
     let filteredProducts = products.filter((product)=>{
         return product.category == category ? product : 0;
@@ -47,7 +61,10 @@ export default function RecentlyViewed({products,category}) {
                                     <button className="absolute top-4 right-4 bg-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 translate-x-6 group-hover:translate-x-0 transition-all duration-300">
                                         ❤️
                                     </button>
-                                    <button className="absolute bottom-0 w-full left-1/2 transform -translate-x-1/2 translate-y-6 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 bg-green-600 text-white px-6 py-2 transition-all duration-300 shadow-lg">
+                                    <button className="absolute bottom-0 w-full left-1/2 transform -translate-x-1/2 translate-y-6 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 bg-green-600 text-white px-6 py-2 transition-all duration-300 shadow-lg" onClick={(e) => {
+                                        let quantity = 1;
+                                        AddToCart(product, quantity);
+                                    }}>
                                         Add to Cart
                                     </button>
                                 </div>

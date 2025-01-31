@@ -48,7 +48,7 @@ export default function () {
 
         <form onSubmit={submit}>
           {/* Left Section - Checkout Form */}
-          <div className="w-full lg:w-2/3 bg-white p-6 rounded-lg shadow-md">
+          <div className="w-full lg:w-full bg-white p-6 rounded-lg shadow-md">
             {/* Contact Section */}
             <div className="mb-6">
               <h2 className="text-lg font-semibold mb-2">Contact</h2>

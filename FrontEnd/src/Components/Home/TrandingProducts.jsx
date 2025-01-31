@@ -8,6 +8,23 @@ export default function TrandingProducts(props) {
     (product) => product.category === selectedCategory
   );
 
+  
+  function AddToCart(product, quantity) {
+    let localCart = JSON.parse(localStorage.getItem("Array")) || [];
+    
+    product["Quantity"] = quantity || 1;  // Default to 1 if no value is provided
+    
+    localCart.push(product);
+    
+    localStorage.setItem("Array", JSON.stringify(localCart));
+    
+    let cartCounter = parseInt(localStorage.getItem("cartCounter")) || 0;
+    localStorage.setItem("cartCounter", cartCounter + 1);
+    
+    console.log("Product added to cart:", quantity, product);
+}
+
+
   return (
     <>
       <h2 className="mt-10 text-center md:text-left lg:ml-5 text-3xl md:text-4xl font-semibold">
@@ -77,7 +94,10 @@ export default function TrandingProducts(props) {
                 ❤️
               </button>
 
-              <button className="absolute bottom-0 w-full bg-green-600 text-white py-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+              <button className="absolute bottom-0 w-full bg-green-600 text-white py-2 opacity-0 group-hover:opacity-100 transition-all duration-300"  onClick={(e) => {
+    let quantity = 1;
+    AddToCart(product, quantity);
+  }}>
                 Add to Cart
               </button>
             </div>

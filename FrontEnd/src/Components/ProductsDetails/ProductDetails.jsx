@@ -25,7 +25,8 @@ export default function ProductDetails({ products }) {
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }, 100);
-  }, [productId]);
+    setMainImage(product.imgUrl ? product.imgUrl[0] : "");
+  }, [productId],[productId, product.imgUrl]);
  
   let [quantity,setQuantity] = useState(1);
   console.log(quantity);

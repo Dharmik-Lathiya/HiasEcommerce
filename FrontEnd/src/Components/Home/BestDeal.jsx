@@ -4,6 +4,21 @@ import { Link } from "react-router-dom";
 export default function BestDeal({ products }) {
     let filteredProducts = products.filter(product => product.category === 'kidwear');
 
+    function AddToCart(product, quantity) {
+        let localCart = JSON.parse(localStorage.getItem("Array")) || [];
+
+        product["Quantity"] = quantity || 1;
+
+        localCart.push(product);
+
+        localStorage.setItem("Array", JSON.stringify(localCart));
+
+        let cartCounter = parseInt(localStorage.getItem("cartCounter")) || 0;
+        localStorage.setItem("cartCounter", cartCounter + 1);
+
+        console.log("Product added to cart:", quantity, product);
+    }
+
     return (
         <>
             {/* Header Section */}
@@ -53,7 +68,10 @@ export default function BestDeal({ products }) {
                                     </button>
 
                                     {/* Add to Cart Button (Appears on Hover) */}
-                                    <button className="absolute bottom-0 w-full bg-green-600 text-white py-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                    <button className="absolute bottom-0 w-full bg-green-600 text-white py-2 opacity-0 group-hover:opacity-100 transition-all duration-300" onClick={(e) => {
+                                        let quantity = 1;
+                                        AddToCart(item, quantity);
+                                    }}>
                                         Add to Cart
                                     </button>
                                 </div>
