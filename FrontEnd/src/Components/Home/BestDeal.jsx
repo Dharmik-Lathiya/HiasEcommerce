@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import bestDealsImage from "../../assets/Best_deals.jpg";   
+
 
 export default function BestDeal({ products }) {
     let filteredProducts = products.filter(product => product.category === 'kidwear');
@@ -35,11 +37,12 @@ export default function BestDeal({ products }) {
             <div className="flex flex-col lg:flex-row items-start mx-4 sm:mx-6 lg:mx-12 gap-6">
                 {/* Featured Image */}
                 <div className="w-full lg:w-1/3">
-                    <img
-                        src="src/assets/Best_deals.jpg"
-                        alt="Best Deal 1"
-                        className="w-full h-auto lg:h-[500px] object-cover rounded-lg shadow-lg"
-                    />
+                <img
+  src={bestDealsImage}
+  alt="Best Deal 1"
+  className="w-full h-auto lg:h-[500px] object-cover rounded-lg shadow-lg"
+/>
+
                 </div>
 
                 {/* Product Grid */}
