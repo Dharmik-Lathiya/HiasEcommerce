@@ -26,7 +26,7 @@ export default function AdminProducts() {
   return (
     <div style={{ width: "100%" }}>
 
-      <div className='prod-head p-5'>
+      <div className='prod-head p-5 border-b-2'>
         <p >Products</p>
 
         <AddProductBtn type={"addproducts"} content={"Add Products"} />

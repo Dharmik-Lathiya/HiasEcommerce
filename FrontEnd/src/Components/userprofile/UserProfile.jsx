@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
-import UserOrderList from './userOrderList';
+import UserOrderList from './UserOrderList.jsx';
+import Header from '../Header.jsx';
 
 export default function UserProfile() {
 
@@ -31,6 +32,8 @@ export default function UserProfile() {
 
 
   return (
+    <>
+    <Header/>
     <div style={{ width: "100%" }}>
     
              <div className='prod-head p-5'>
@@ -45,5 +48,6 @@ export default function UserProfile() {
                 }
                 </div>
         </div>
+        </>
   )
 }

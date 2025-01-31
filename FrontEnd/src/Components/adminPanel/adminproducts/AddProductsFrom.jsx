@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-export default function AddProductsFrom(props) {
-
-
-  const { prodid } = useParams()
+export default function AddProductsForm() {
+  const { prodid } = useParams();
   const [formData, setFormData] = useState({
     name: "",
     desc: "",
@@ -13,248 +11,80 @@ export default function AddProductsFrom(props) {
     price: "",
     stock: "",
   });
-
-  let imgUrl = formData.imgUrl;
-  let renderForimg = formData.imgUrl;
   const [flag, setFlag] = useState(false);
-
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-
-
     if (files) {
-      console.log(files);
-      
-      for (let file of files) {
-
-          // renderForimg.push(URL.createObjectURL(file))
-          const reader = new FileReader();
-          reader.onload = (file) => {
-            imgUrl.push(reader.result);
-            console.log(imgUrl);
-            setFlag(!flag)
-          
-        }
-        reader.readAsDataURL(file);
-
-      }
+      const fileArray = Array.from(files);
+      const imageUrls = fileArray.map(file => URL.createObjectURL(file));
+      setFormData(prev => ({ ...prev, imgUrl: [...prev.imgUrl, ...imageUrls] }));
+      setFlag(!flag);
+    } else {
+      setFormData({ ...formData, [name]: value });
     }
-    setFormData({
-      ...formData,
-      [name]: files ? imgUrl : value
-    });
-
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log(formData);
-    if(prodid){
-      fetch("http://localhost:3000/admin/updateProducts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({"update":formData})
-      }).then((res) => {
-        res.json().then(data => {
-          console.log(data);
-  
-        })
-      }).catch(err => {
-        console.log(err);
-      })
-
-    }else{
-    fetch("http://localhost:3000/admin/addProducts", {
+    const url = prodid ? "http://localhost:3000/admin/updateProducts" : "http://localhost:3000/admin/addProducts";
+    fetch(url, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData)
-    }).then((res) => {
-      res.json().then(data => {
-        console.log(data);
-
-      })
-    }).catch(err => {
-      console.log(err);
-    })
-  }
-
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(prodid ? { update: formData } : formData)
+    }).then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
   };
 
-  function deleteProduct(){
+  const deleteProduct = () => {
     fetch("http://localhost:3000/admin/deleteProducts", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({id:prodid})
-    }).then((res) => {
-      res.json().then(data => {
-        console.log(data);
-
-      })
-    }).catch(err => {
-      console.log(err);
-    })
-  }
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: prodid })
+    }).then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+  };
 
   useEffect(() => {
-
-
-
-    document.getElementById('imgset').innerHTML = " ";
-      renderForimg.forEach((url) => {
-  
-        let img = document.createElement('img');
-        img.width = 100
-        img.height = 100
-        img.src = url
-        document.getElementById('imgset').appendChild(img);
-      })
-
     if (prodid) {
       fetch("http://localhost:3000/admin/allProducts", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ filter: { _id: prodid } })
-      }).then(res => {
-        res.json().then(data => {
-          console.log(data);
-          setFormData(...data)
-          imgUrl = formData.imgUrl;
-          document.getElementById('imgset').innerHTML = " "
-          console.log("1");
-          
-          imgUrl.forEach((url) => {
-            console.log("2");
-              
-            let img = document.createElement('img');
-            img.width = 100
-            img.height = 100
-            img.src = url
-            document.getElementById('imgset').appendChild(img);
-          })
-
-          
-
-        })
-      })
-    
+      }).then(res => res.json())
+        .then(data => setFormData(data[0]))
+        .catch(err => console.log(err));
     }
-
-  }, [flag])
-
+  }, [prodid]);
 
   return (
-    <div className="max-w-md mx-auto p-4 bg-white shadow-md rounded-2xl">
-      <h2 className="text-xl font-bold mb-4 text-center">Add Product</h2>
+    <div className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg w-[90%]">
+      <h2 className="text-2xl font-bold mb-4 text-center">{prodid ? "Update Product" : "Add Product"}</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full mt-1 p-2 border rounded-lg"
-            placeholder="Enter product name"
-            required
-          />
+        <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Product Name" className="w-full p-2 border rounded-lg" required />
+        <textarea name="desc" value={formData.desc} onChange={handleChange} placeholder="Description" className="w-full p-2 border rounded-lg" required></textarea>
+        <input type="file" multiple accept="image/*" onChange={handleChange} className="w-full p-2 border rounded-lg" />
+        <div className="flex flex-wrap gap-2">
+          {formData.imgUrl.map((url, index) => (
+            <img key={index} src={url} alt="Product" className="w-24 h-24 object-cover rounded-lg" />
+          ))}
         </div>
-        <div>
-          <label htmlFor="description" className="block text-sm font-medium">Description</label>
-          <textarea
-            id="description"
-            name="desc"
-            value={formData.desc}
-            onChange={handleChange}
-            className="w-full mt-1 p-2 border rounded-lg"
-            placeholder="Enter product description"
-            required
-          ></textarea>
-        </div>
-        <div>
-          <label htmlFor="image" className="block text-sm font-medium">Image</label>
-          <input
-            type="file"
-            id="image"
-            name="image"
-            accept="image/*"
-            onChange={handleChange}
-            className="w-full mt-1 p-2 border rounded-lg"
-            multiple
-          />
-          <div id='imgset'>
-
-          </div>
-
-
-
-
-        </div>
-        <div>
-          <label htmlFor="category" className="block text-sm font-medium">Category</label>
-          <select
-            id="category"
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-            className="w-full mt-1 p-2 border rounded-lg"
-            required
-          >
-            <option value="">Select a category</option>
-            <option value="Menswear">Men's wear</option>
-            <option value="Womenswear">Women's wear</option>
-            <option value="kidwear">kid's wear</option>
-            <option value="sports">Sports wear</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="price" className="block text-sm font-medium">Price</label>
-          <input
-            type="number"
-            id="price"
-            name="price"
-            value={formData.price}
-            onChange={handleChange}
-            className="w-full mt-1 p-2 border rounded-lg"
-            placeholder="Enter price"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="stock" className="block text-sm font-medium">Stock</label>
-          <input
-            type="number"
-            id="stock"
-            name="stock"
-            value={formData.stock}
-            onChange={handleChange}
-            className="w-full mt-1 p-2 border rounded-lg"
-            placeholder="Enter stock quantity"
-            required
-          />
-        </div>
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
-        >
-          {prodid ? "Update Product" :  "add Product"}
+        <select name="category" value={formData.category} onChange={handleChange} className="w-full p-2 border rounded-lg" required>
+          <option value="">Select Category</option>
+          <option value="Menswear">Men's Wear</option>
+          <option value="Womenswear">Women's Wear</option>
+          <option value="kidwear">Kid's Wear</option>
+          <option value="sports">Sports Wear</option>
+        </select>
+        <input type="number" name="price" value={formData.price} onChange={handleChange} placeholder="Price" className="w-full p-2 border rounded-lg" required />
+        <input type="number" name="stock" value={formData.stock} onChange={handleChange} placeholder="Stock" className="w-full p-2 border rounded-lg" required />
+        <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
+          {prodid ? "Update Product" : "Add Product"}
         </button>
+        {prodid && <button onClick={deleteProduct} className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 mt-3">Delete Product</button>}
       </form>
-      {
-        prodid && <button className="mt-5 w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600" onClick={deleteProduct}>
-          delete product 
-      </button>
-      }
     </div>
-  )
+  );
 }
