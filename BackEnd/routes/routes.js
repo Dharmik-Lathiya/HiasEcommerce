@@ -16,7 +16,7 @@ const product = require("../models/products")
 
 
 route.get("/",(req,res)=>{
-        res.send("good")
+        res.send("very")
 })
 route.post('/user/singup',UserSignUp);
 route.post('/user/login',UserLogin);
