@@ -4,8 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
+
+
 export default function Login() {
   const navigate = useNavigate();
+
 
   function LogIn(e) {
     e.preventDefault();
@@ -14,7 +18,7 @@ export default function Login() {
       password: e.target[1].value,
     };
 
-    fetch("http://localhost:3000/user/login", {
+    fetch(import.meta.env.VITE_API_KEY+"/user/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -68,7 +72,7 @@ export default function Login() {
       password: e.target[3].value,
     };
 
-    fetch("http://localhost:3000/user/signup", {
+    fetch(import.meta.env.VITE_API_KEY+"/user/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

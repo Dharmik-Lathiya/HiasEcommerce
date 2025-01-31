@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export default function AddProductsForm() {
   const { prodid } = useParams();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     desc: "",
@@ -39,6 +40,7 @@ export default function AddProductsForm() {
       }).then((res) => {
         res.json().then(data => {
           console.log(data);
+          navigate("/admin/products")
   
         })
       }).catch(err => {
@@ -55,6 +57,8 @@ export default function AddProductsForm() {
     }).then((res) => {
       res.json().then(data => {
         console.log(data);
+        navigate("/admin/products")
+
 
       })
     }).catch(err => {
@@ -70,7 +74,9 @@ export default function AddProductsForm() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: prodid })
     }).then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {console.log(data)
+        navigate("/admin/products")
+      })
       .catch(err => console.log(err));
   };
 

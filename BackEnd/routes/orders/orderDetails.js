@@ -29,7 +29,6 @@ const orderDetails = async (req, res) => {
 
     }
 
-    console.log(testMonth);
     
     const monthCounts = months.reduce((acc, month) => {
         acc[month] = (acc[month] || 0) + 1; // Count occurrences

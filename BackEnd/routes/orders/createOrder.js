@@ -12,10 +12,12 @@ const createOrders = async (req,res)=>  {
         let data = await productSchema.find({_id:{$in:req.body.products}})
         
             
-        data.forEach(node =>{
-             total += (node.price * req.body.quantity[i])
+        
+        for(let node of data){
+             total += (node.price * req.body.quantity[i]);
+             await productSchema.findByIdAndUpdate(node._id,{orders : node.orders ? node.orders+ 1 : 1})
             i++;
-        })
+        }
 
         const newOrder = new OrderSchema({...req.body,total:total})
         

@@ -9,6 +9,10 @@ export default function UserProfile() {
   if (!JSON.parse(localStorage.getItem('isLogedIn'))) {
     return <Navigate to={"/"} />
   }
+  else if(JSON.parse(localStorage.getItem('isAdmin'))){
+    return <Navigate to={"/admin/dashboard"} />
+
+  }
   const [data, setdata] = useState([]);
 
   useEffect(() => {

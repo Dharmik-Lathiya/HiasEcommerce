@@ -11,7 +11,7 @@ const userOrders = require("./orders/userOrders")
 const orderDetails = require('./orders/orderDetails')
 
 
-
+const product = require("../models/products")
 
 
 
@@ -28,5 +28,12 @@ route.post('/buy',createOrders);
 route.post('/admin/Orders',getOrders);
 route.post('/userOrders',userOrders);
 route.post('/OrderDetails',orderDetails);
+
+
+route.post("/deelte",async(req,res)=>{
+              await  product.deleteMany({category:{$in:["Womenswear","kidwear","sports"]}}).then(()=>{
+                res.status(200).send({sucses:true})
+              })
+})
 
 module.exports = route; 

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Header from "./Header";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "./Footer";
 
 export default function OrderSummary({ products }) {
   const { productId, quantity } = useParams();
   const product = products.find((p) => p._id === productId);
+
+  const navigate = useNavigate()
 
   if (!product) {
     return;
@@ -58,6 +60,7 @@ export default function OrderSummary({ products }) {
     }).then((res) => {
       res.json().then(data => {
         console.log(data);
+        navigate("/user")
       })
     })
   }
