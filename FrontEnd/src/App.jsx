@@ -54,12 +54,10 @@ import UserProfile from './Components/userprofile/UserProfile';
               <Route path="/Categories/:URLcategory" element={<CategoryPage products={allProducts} />}/>
           </Route>
           <Route path="/About-Us" element={<AboutUs />} />
-<<<<<<< HEAD
           <Route path="/Contact-Us" element={<ContectUs />} />
-=======
+
           <Route path="/Contect-Us" element={<ContectUs />} />
           <Route path="/user" element={<UserProfile />} />
->>>>>>> 5f9ef68bdaf5cda2ebe1ca534f3c74a552d9ea05
 
         </Routes>
       </>

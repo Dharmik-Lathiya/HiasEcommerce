@@ -7,6 +7,7 @@ import Footer from "../Footer";
 import RecentlyViewed from "./RecentlyViewed";
 import { Link } from 'react-router-dom'
 import AddToCart from "../AddToCart";
+import { useEffect } from "react";
 
 
 
@@ -20,6 +21,12 @@ export default function ProductDetails({ products }) {
     return;
   }
 
+  window.onchange = (e) => {
+    e.preventDefault();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  }
  
   let [quantity,setQuantity] = useState(1);
   console.log(quantity);
