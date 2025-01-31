@@ -10,7 +10,7 @@ export default function AdminProducts() {
 
   useEffect(() => {
 
-    fetch("http://localhost:3000/admin/allProducts", {
+    fetch(import.meta.env.VITE_API_KEY+"/admin/allProducts", {
       method: "POST"
     }).then(res => {
       res.json().then(data => {

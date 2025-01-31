@@ -17,7 +17,7 @@ export default function Login() {
     }
     console.log(formData);
     
-    fetch("http://localhost:3000/user/login",{
+    fetch(import.meta.env.VITE_API_KEY+"/user/login",{
       method:"POST",
       headers:{
         "Content-Type": "application/json",
@@ -43,6 +43,8 @@ export default function Login() {
           }else{
             localStorage.setItem("isLogedIn",data.success);
             localStorage.setItem("isAdmin",data.isAdmin);
+            console.log(data);
+            
           }        
           
         })
@@ -61,7 +63,7 @@ export default function Login() {
       }
       console.log(formData);
       
-      fetch("http://localhost:3000/user/singup",{
+      fetch(import.meta.env.VITE_API_KEY+"/user/singup",{
         method:"POST",
         headers:{
           "Content-Type": "application/json",
@@ -80,6 +82,8 @@ export default function Login() {
             }else{
               localStorage.setItem("isLogedIn",data.success);
               localStorage.setItem("isAdmin",data.isAdmin);
+              console.log(data);
+
             }
             
           })
@@ -111,6 +115,7 @@ export default function Login() {
     return (
     <div className="Login-container "> 
       <div className="wrapper content-center items-center p-10 h-screen ">
+        
     <div className="title-text">
       <div className="title login">Login Form</div>
       <div className="title signup">Signup Form</div>

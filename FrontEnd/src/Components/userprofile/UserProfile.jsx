@@ -11,7 +11,7 @@ export default function UserProfile() {
   const [data, setdata] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/userOrders", {
+    fetch(import.meta.env.VITE_API_KEY+"/userOrders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

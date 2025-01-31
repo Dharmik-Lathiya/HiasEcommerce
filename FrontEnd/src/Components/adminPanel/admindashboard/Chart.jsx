@@ -1,31 +1,28 @@
 import React, { useEffect } from 'react'
 import {Chart as ChartJs} from 'chart.js/auto'
 
-export default function Chart() {
+export default function Chart({chartData}) {
 
+  console.log(chartData);
+  
+    if(!chartData){
+        return
+    }
 
         useEffect(()=>{
             (async function() {
-                const data = [
-                  { year: 2010, count: 10 },
-                  { year: 2011, count: 20 },
-                  { year: 2012, count: 15 },
-                  { year: 2013, count: 25 },
-                  { year: 2014, count: 22 },
-                  { year: 2015, count: 30 },
-                  { year: 2016, count: 28 },
-                ];
+                
               
                 new ChartJs(
                   document.getElementById('acquisitions'),
                   {
                     type: 'bar',
                     data: {
-                      labels: data.map(row => row.year),
+                      labels: chartData.map(row => row.month),
                       datasets: [
                         {
-                          label: 'Acquisitions by year',
-                          data: data.map(row => row.count)
+                          label: 'orders by month',
+                          data: chartData.map(row => row.count)
                         }
                       ]
                     }

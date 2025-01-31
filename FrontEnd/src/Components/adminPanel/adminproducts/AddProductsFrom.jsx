@@ -52,7 +52,7 @@ export default function AddProductsFrom(props) {
 
     console.log(formData);
     if(prodid){
-      fetch("http://localhost:3000/admin/updateProducts", {
+      fetch(import.meta.env.VITE_API_KEY+"/admin/updateProducts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +68,7 @@ export default function AddProductsFrom(props) {
       })
 
     }else{
-    fetch("http://localhost:3000/admin/addProducts", {
+    fetch(import.meta.env.VITE_API_KEY+"/admin/addProducts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -87,7 +87,7 @@ export default function AddProductsFrom(props) {
   };
 
   function deleteProduct(){
-    fetch("http://localhost:3000/admin/deleteProducts", {
+    fetch(import.meta.env.VITE_API_KEY+"/admin/deleteProducts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -118,7 +118,7 @@ export default function AddProductsFrom(props) {
       })
 
     if (prodid) {
-      fetch("http://localhost:3000/admin/allProducts", {
+      fetch(import.meta.env.VITE_API_KEY+"/admin/allProducts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

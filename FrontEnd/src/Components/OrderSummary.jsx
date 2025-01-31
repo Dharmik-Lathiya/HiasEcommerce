@@ -40,7 +40,7 @@ export default function OrderSummary({ products }) {
     })
 
 
-    fetch("http://localhost:3000/buy", {
+    fetch(import.meta.env.VITE_API_KEY+"/buy", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

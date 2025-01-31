@@ -8,7 +8,7 @@ const allProducts  = require("./products/allProducts")
 const createOrders = require("./orders/createOrder")
 const  getOrders = require("./orders/getOrders")
 const userOrders = require("./orders/userOrders") 
-
+const orderDetails = require('./orders/orderDetails')
 
 
 
@@ -27,5 +27,6 @@ route.post('/admin/allProducts',allProducts);
 route.post('/buy',createOrders);
 route.post('/admin/Orders',getOrders);
 route.post('/userOrders',userOrders);
+route.post('/OrderDetails',orderDetails);
 
 module.exports = route; 

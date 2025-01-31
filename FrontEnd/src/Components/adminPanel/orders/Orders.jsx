@@ -5,7 +5,7 @@ export default function Orders() {
     const [data,setdata] = useState([]);
     useEffect(() => {
     
-        fetch("http://localhost:3000/admin/Orders", {
+        fetch(import.meta.env.VITE_API_KEY+"/admin/Orders", {
           method: "POST"
         }).then(res => {
           res.json().then(data => {
