@@ -14,11 +14,14 @@ const orderDetails = async (req, res) => {
     for (let node of orders) {
 
         const dateObj = new Date(node._doc.date);
-        const day = new Date().getUTCDate();
+        const day = new Date().getDate();
         const month = dateObj.getUTCMonth() + 1; 
         const date = dateObj.getUTCDate();
 
         months.push(month)
+
+        console.log(day);
+        
 
         if(date == day){
             count++
