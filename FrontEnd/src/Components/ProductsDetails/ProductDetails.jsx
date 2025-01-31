@@ -21,12 +21,11 @@ export default function ProductDetails({ products }) {
     return;
   }
 
-  window.onchange = (e) => {
-    e.preventDefault();
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-  }
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 100);
+  }, [productId]);
  
   let [quantity,setQuantity] = useState(1);
   console.log(quantity);
@@ -61,13 +60,13 @@ export default function ProductDetails({ products }) {
       <Header />
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Left Image Section */}
+         
           <div className="flex flex-col">
-            {/* Main Image */}
+           
             <img
               src={mainImage}
               alt={product.name}
-              className="rounded-lg shadow-md w-[100%] h-96"
+              className="rounded-lg shadow-md w-[100%] h-[400px] object-cover"
             />
             <div className="mt-4 grid grid-cols-4 gap-2">
               {/* Thumbnails */}
@@ -76,7 +75,7 @@ export default function ProductDetails({ products }) {
                   key={index}
                   src={img}
                   alt={`Thumbnail ${index + 1}`}
-                  className="h-16 w-16 object-cover border rounded-md hover:ring-2 ring-green-500 cursor-pointer"
+                  className="h-auto w-16 border rounded-md hover:ring-2 ring-green-500 cursor-pointer"
                   onClick={() => setMainImage(img)} // Update the main image on click
                 />
               ))}

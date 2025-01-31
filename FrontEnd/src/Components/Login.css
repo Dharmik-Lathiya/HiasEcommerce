@@ -202,3 +202,14 @@ form .btn input[type="submit"]{
   background-color: #dc3545;
   color: white;
 }
+.Toastify__toast {
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 8px;
+}
+.Toastify__toast--error {
+  background: #ff4d4d;
+}
+.Toastify__toast--success {
+  background: #4caf50;
+}
