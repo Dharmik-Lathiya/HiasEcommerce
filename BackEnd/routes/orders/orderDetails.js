@@ -14,7 +14,7 @@ const orderDetails = async (req, res) => {
     for (let node of orders) {
 
         const dateObj = new Date(node._doc.date);
-        const day = new Date().getDate();
+        const day = new Date().getUTCDate();
         const month = dateObj.getUTCMonth() + 1; 
         const date = dateObj.getUTCDate();
 
