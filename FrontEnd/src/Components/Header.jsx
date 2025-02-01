@@ -29,7 +29,7 @@ const Header = () => {
   };
 
   const Submenu = ({ isVisible }) => (
-    <div 
+    <div
       className={`absolute left-0 mt-2 w-48 bg-white border border-gray-300 shadow-lg rounded-md z-50 transition-all duration-300 ${isVisible ? "block" : "hidden"}`}
       onMouseEnter={() => setOpenSubmenu("Categories")}
       onMouseLeave={handleMouseLeave}
@@ -77,7 +77,12 @@ const Header = () => {
           <Link to={isLogedIn ? "/user" : "/Login"} className="text-gray-600">
             <i className="fas fa-user"></i>
           </Link>
-         
+          <Link to="/" onClick={() => { localStorage.setItem("isAdmin", false); localStorage.setItem("isLogedIn", false); localStorage.setItem("userId", ""); }} className="block py-2 px-4 hover:bg-red-600 rounded text-gray-600">
+                      
+          <i className="fas fa-user"></i>
+
+          </Link>
+
           <Link to="/Cart">
             <button className="text-gray-600 relative">
               <i className="fas fa-shopping-cart"></i>
