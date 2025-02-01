@@ -18,7 +18,7 @@ export default function Login() {
       password: e.target[1].value,
     };
 
-    fetch(import.meta.env.VITE_API_KEY+"/user/login", {
+    fetch(import.meta.env.VITE_API_KEY + "/user/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -72,7 +72,7 @@ export default function Login() {
       password: e.target[3].value,
     };
 
-    fetch(import.meta.env.VITE_API_KEY+"/user/signup", {
+    fetch(import.meta.env.VITE_API_KEY + "/user/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -96,15 +96,30 @@ export default function Login() {
 
           navigate("/");
         } else {
-          toast.error(data?.message || "Signup failed. Please try again.", {
-            autoClose: 5000,
-            position: "top-center",
-            style: { backgroundColor: "#008000", color: "#fff", textAlign: "center" },
-          });
+
+          const errorString = data.message
+          const errorArray = errorString.replace("Validation failed: ", "").split(", ");
+
+          let validationErrors = errorArray.reduce((acc, err) => {
+            const [key, value] = err.split(": "); // Split each error by ": "
+            acc[key] = value; // Assign key-value pair
+            return acc;
+          }, {});
+          console.log(validationErrors);
+
+
+          for (const error in validationErrors) {
+            toast.error( validationErrors[error]|| "Signup failed. Please try again.", {
+              autoClose: 5000,
+              position: "top-center",
+              style: { backgroundColor: "#008000", color: "#fff", textAlign: "center" },
+            });
+          }
+          
         }
       })
       .catch((err) => {
-        console.error(err);``
+        console.error(err); 
         toast.error("Something went wrong. Please try again.", {
           autoClose: 5000,
           position: "top-center",

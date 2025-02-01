@@ -43,7 +43,7 @@ const UserLogin = async (req,res)=>{
 
             res.status(400).send({
                 success:false,
-                message:"Email does not  exisst",
+                message:"Email does not  exist",
                 isAdmin:false
 
         })
