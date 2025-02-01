@@ -2,6 +2,7 @@ const OrderSchema = require("../../models/ordes");
 
 const orderDetails = async (req, res) => {
 
+    console.log(req.body.year);
 
     let orders = await OrderSchema.find({});
     let months = [];
@@ -15,13 +16,18 @@ const orderDetails = async (req, res) => {
 
         const dateObj = new Date(node._doc.date);
         const day = new Date().getDate();
+        const year = dateObj.getUTCFullYear();
         const month = dateObj.getUTCMonth() + 1; 
         const date = dateObj.getUTCDate();
 
-        months.push(month)
-
-        console.log(day);
         
+
+        
+        if(req.body.year == year){
+            
+            months.push(month);
+
+        }        
 
         if(date == day){
             count++
