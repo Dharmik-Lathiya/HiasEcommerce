@@ -1,8 +1,48 @@
-# React + Vite
+# Hias E-commerce
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is an e-commerce platform built with a React frontend and an Express backend. It allows users to browse products, add them to the cart, and place orders. Admins can manage products and view orders.
 
-Currently, two official plugins are available:
+## Project Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- npm
+
+### Installation
+
+1. Clone the repository:
+
+```sh
+git clone https://github.com/yourusername/hias-ecommerce.git
+cd hias-ecommerce
+
+2. Install dependencies for the backend:
+cd BackEnd
+npm install
+
+3. Install dependencies for the frontend:
+cd ../FrontEnd
+npm install
+
+Running the Project
+
+1.Start the backend server:
+cd BackEnd
+node index.js
+
+2.Start the frontend development server:
+cd ../FrontEnd
+npm run dev
+
+Project Details
+    Backend
+    Database Connection: dbconnection.js
+    Models: models
+    Routes: routes
+Frontend
+    Main Entry: main.jsx
+    Components: Components
+    Styles: index.css, App.css

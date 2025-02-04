@@ -55,7 +55,7 @@ export default function TrandingProducts(props) {
           }`}
           onClick={() => setSelectedCategory("kidwear")}
         >
-          Sportswear
+          Kidswaer
         </span>
         <span
           className={`cursor-pointer ${
@@ -63,7 +63,7 @@ export default function TrandingProducts(props) {
           }`}
           onClick={() => setSelectedCategory("sports")}
         >
-          Officewear
+          Sportswear
         </span>
       </div>
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from './Header'
-
+import { useNavigate } from 'react-router-dom';
 
 export default function () {
 
@@ -8,7 +8,8 @@ export default function () {
   let total = 0;
   let productId = []
   let quantity = []
-
+  const navigate = useNavigate();
+  
   product.map((product) => {
     total = (product.price * product.Quantity) + total;
     productId.push(product._id);
@@ -16,6 +17,13 @@ export default function () {
   })
   function submit(e) {
     e.preventDefault();
+
+    let login = JSON.parse(localStorage.getItem("isLogedIn"));
+    if(login===null||login===false){
+    navigate("/login");
+    return;
+    }
+
 
     let date = new Date().toISOString().slice(0, 10)
 

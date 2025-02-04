@@ -59,7 +59,7 @@ const Header = () => {
             <i className="fas fa-bars text-2xl"></i>
           </button>
           {openSubmenu === "AllCategories" && <Submenu isVisible={true} />}
-          <img src={logo} alt="Logo" className="h-14 w-32" />
+          <Link to="/"><img src={logo} alt="Logo" className="h-14 w-32" /></Link>
         </div>
 
         <div className="hidden lg:flex flex-1 mx-8">
@@ -77,17 +77,17 @@ const Header = () => {
           <Link to={isLogedIn ? "/user" : "/Login"} className="text-gray-600">
             <i className="fas fa-user"></i>
           </Link>
-          <Link to="/" onClick={() => { localStorage.setItem("isAdmin", false); localStorage.setItem("isLogedIn", false); localStorage.setItem("userId", ""); }} className="block py-2 px-4 hover:bg-red-600 rounded text-gray-600">
-                      
-          <i className="fas fa-user"></i>
-
-          </Link>
-
+          
           <Link to="/Cart">
             <button className="text-gray-600 relative">
               <i className="fas fa-shopping-cart"></i>
               <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">{cartCounter}</span>
             </button>
+          </Link>
+          <Link to="/" onClick={() => { localStorage.setItem("isAdmin", false); localStorage.setItem("isLogedIn", false); localStorage.setItem("userId", ""); }} className="block py-2 px-4 hover:bg-red-600 rounded text-gray-600">
+                      
+          <i class="fas fa-sign-out-alt"></i>
+
           </Link>
         </div>
       </div>

@@ -28,7 +28,11 @@ export default function OrderSummary({ products }) {
 
     e.preventDefault();
 
-
+    let login = JSON.parse(localStorage.getItem("isLogedIn"));
+    if(login===null||login===false){
+    navigate("/login");
+    return;
+    }
 
     setFormData({
       name: e.target[3].value + " " + e.target[4].value,
