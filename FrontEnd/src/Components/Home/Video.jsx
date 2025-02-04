@@ -1,5 +1,5 @@
 import React from 'react';
-
+import videosrc from '../../assets/video.mp4';
 export default function Video() {
   return (
     <div className='my-10'>
@@ -10,7 +10,7 @@ export default function Video() {
         loop
         className="w-[100%] h-[auto] block m-auto"
       >
-        <source src="src/assets/Video.mp4" type="video/mp4" />
+        <source src={videosrc} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
