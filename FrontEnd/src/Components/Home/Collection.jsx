@@ -10,12 +10,12 @@ import categoryBanner4 from "../../assets/Category_banner_4.jpg";
 function SwipeToSlide() {
     const Menscasualwear = [
         {
-            imgUrl: categoryBanner1,
+            imgUrl: categoryBanner2,
             CategoryName: "Menswear",
             Items: 20,
         },
         {
-            imgUrl: categoryBanner2,
+            imgUrl: categoryBanner1,
             CategoryName: "Womenswear",
             Items: 220,
         },

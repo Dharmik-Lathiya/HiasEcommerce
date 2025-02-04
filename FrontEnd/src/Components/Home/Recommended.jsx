@@ -32,13 +32,13 @@ export default function Recommended(props) {
                     className="hover:text-green-600 hover:underline cursor-pointer"
                     onClick={() => setSelectedCategory('kidwear')}
                 >
-                    Sportswear
+                    Kidswear
                 </span>
                 <span
                     className="hover:text-green-600 hover:underline cursor-pointer"
                     onClick={() => setSelectedCategory('sports')}
                 >
-                    Officewear
+                    Sportswear
                 </span>
             </div>
 
