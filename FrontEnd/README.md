@@ -46,3 +46,7 @@ Frontend
     Main Entry: main.jsx
     Components: Components
     Styles: index.css, App.css
+
+For Admin Rights login with 
+    username : jay123@gmail.com
+    password: jay@123
