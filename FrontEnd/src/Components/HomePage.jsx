@@ -99,7 +99,6 @@ const smallBannerImages3 = [smallBanner6, smallBanner7];
       <Collection />
       <TrendingWeek products={props.products} />
       <Recommended products={props.products} />
-      <Video />
       <Footer />
     </>
   );
