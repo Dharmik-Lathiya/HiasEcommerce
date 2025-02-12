@@ -17,4 +17,3 @@ app.use('/',route);
 const server = app.listen(3000,()=>{
 
 })
-server.timeout(300000)
