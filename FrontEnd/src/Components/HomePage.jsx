@@ -4,7 +4,6 @@ import Header from './Header.jsx';
 import BestDeal from './Home/BestDeal.jsx';
 import Collection from './Home/Collection.jsx';
 import TrendingWeek from './Home/TrendingWeek.jsx';
-import Video from './Home/Video.jsx';
 import Recommended from './Home/Recommended.jsx';
 import Footer from './Footer.jsx';
 import TrandingProducts from './Home/TrandingProducts.jsx';
