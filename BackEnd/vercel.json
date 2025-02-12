@@ -9,11 +9,7 @@
     "routes": [
     {
     "src": "/(.*)",
-    "dest": "index.js",
-    "headers": {
-        "x-vercel-timeout": "60"
-      }
-
+    "dest": "index.js"
     }
     ]
 }
