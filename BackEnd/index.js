@@ -14,6 +14,7 @@ app.use(bodyParser.urlencoded({ limit: '50mb',extended:false, parameterLimit: 50
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use('/',route);
 
-app.listen(3000,()=>{
+const server = app.listen(3000,()=>{
 
 })
+server.timeout(300000)
