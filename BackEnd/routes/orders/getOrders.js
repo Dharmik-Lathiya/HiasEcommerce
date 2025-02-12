@@ -6,15 +6,14 @@ const getOrders = async (req,res)=>{
     try {
     
             let orders = await OrderSchema.find({})
-            let products = [];
             let i = 0;
             
-            for(let node of orders){
+            // for(let node of orders){
                 
-                orders[i] = {...node._doc , Orderdproducts:[await product.find({_id:node.products}).select("name")]}
-                i++;
+            //     orders[i] = {...node._doc , Orderdproducts:[await product.find({_id:node.products}).select("name")]}
+            //     i++;
 
-            }
+            // }
             
             
     

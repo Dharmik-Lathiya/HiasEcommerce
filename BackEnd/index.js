@@ -13,10 +13,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ limit: '50mb',extended:false, parameterLimit: 50000}))
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use('/',route);
-app.use((req, res, next) => {
-    req.setTimeout(60000); // 60 seconds
-    next();
-  });
+
   
 app.listen(3000,()=>{
 
