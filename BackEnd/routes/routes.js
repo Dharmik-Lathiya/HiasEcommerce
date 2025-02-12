@@ -25,7 +25,7 @@ route.post('/admin/deleteProducts',deleteProducts);
 route.post('/admin/updateProducts',updateProducts);
 route.post('/admin/allProducts',allProducts);
 route.post('/buy',createOrders);
-route.post('/admin/Orders',getOrders);
+route.get('/admin/Orders',getOrders);
 route.post('/userOrders',userOrders);
 route.post('/OrderDetails',orderDetails);
 
