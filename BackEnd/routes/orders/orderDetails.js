@@ -2,7 +2,7 @@ const OrderSchema = require("../../models/ordes");
 
 const orderDetails = async (req, res) => {
 
-    console.log(req.body.year);
+     (req.body.year);
 
     let orders = await OrderSchema.find({});
     let months = [];

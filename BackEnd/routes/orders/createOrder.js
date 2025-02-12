@@ -3,7 +3,6 @@ const productSchema = require("../../models/products");
 const UserSchema = require("../../models/UserSchema")
 const createOrders = async (req,res)=>  {
 
-        console.log(req.body);
         
         let total = 0;
         let i = 0;

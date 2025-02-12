@@ -10,10 +10,8 @@ const getOrders = async (req,res)=>{
             let i = 0;
             
             for(let node of orders){
-                console.log({...node._doc});
                 
-                // products.push(...await product.find({_id:node.products}));
-                orders[i] = {...node._doc , Orderdproducts:[...await product.find({_id:node.products})]}
+                orders[i] = {...node._doc , Orderdproducts:[await product.find({_id:node.products}).select("name")]}
                 i++;
 
             }

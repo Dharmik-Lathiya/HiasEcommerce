@@ -4,7 +4,6 @@ const product = require("../../models/products");
 
 
 const deleteProducts = async (req,res)=>{
-    console.log("dfghj");
     
 
      let data = await product.findByIdAndDelete(req.body.id).then(()=>{
