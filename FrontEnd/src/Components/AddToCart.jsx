@@ -27,7 +27,7 @@ export default function () {
 
     let date = new Date().toISOString().slice(0, 10)
 
-    fetch(import.meta.env.VITE_API_KEY+"/buy", {
+    fetch(import.meta.env.VITE_API_KEY.replace(/\/$/, '') + "/buy", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

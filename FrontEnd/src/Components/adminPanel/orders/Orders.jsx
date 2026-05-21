@@ -5,7 +5,7 @@ export default function Orders() {
     const [data,setdata] = useState([]);
     useEffect(() => {
     
-        fetch(import.meta.env.VITE_API_KEY+"/admin/Orders").then(res => {
+        fetch(import.meta.env.VITE_API_KEY.replace(/\/$/, '') + "/admin/Orders").then(res => {
           res.json().then(data => {
             setdata(data)
             console.log(data);

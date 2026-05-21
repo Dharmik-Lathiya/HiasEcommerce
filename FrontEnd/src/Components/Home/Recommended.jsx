@@ -1,92 +1,57 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import ProductCard from './ProductCard';
 
 export default function Recommended(props) {
     const [selectedCategory, setSelectedCategory] = useState('Menswear');
     
-    // Filtering products based on selected category
+    const categories = [
+        { id: "Menswear", label: "Men's Casualwear" },
+        { id: "Womenswear", label: "Women's Westernwear" },
+        { id: "kidwear", label: "Kidswear" },
+        { id: "sports", label: "Sportswear" },
+    ];
+
     let filteredProducts = props.products.filter((product) => {
         return product.category === selectedCategory;
-    });
+    }).slice(0, 4);
 
     return (
-        <>
-            <div className="ml-5 my-12 text-3xl font-semibold">
-                <p>Recommended for You</p>
-            </div>
-
-            <div className="my-6 ml-6 gap-6 text-xl sm:text-2xl flex flex-wrap">
-                <span
-                    className="hover:text-green-600 hover:underline cursor-pointer"
-                    onClick={() => setSelectedCategory('Menswear')}
-                >
-                    Mens Casualwear
-                </span>
-                <span
-                    className="hover:text-green-600 hover:underline cursor-pointer"
-                    onClick={() => setSelectedCategory('Womenswear')}
-                >
-                    Womens Westernwear
-                </span>
-                <span
-                    className="hover:text-green-600 hover:underline cursor-pointer"
-                    onClick={() => setSelectedCategory('kidwear')}
-                >
-                    Kidswear
-                </span>
-                <span
-                    className="hover:text-green-600 hover:underline cursor-pointer"
-                    onClick={() => setSelectedCategory('sports')}
-                >
-                    Sportswear
-                </span>
-            </div>
-
-            <div className="my-5 flex flex-wrap">
-                {filteredProducts.map((product, i) => (
-                    <div
-                        key={i}
-                        className="ml-[2vw] flex w-full sm:w-72 md:w-80 lg:w-[47%] bg-white rounded-lg shadow-xl h-auto my-5"
-                    >
-                        <div>
-                            <Link to={`/product/${product._id}`}>
-                            <img
-                                className="w-36 h-full box-border rounded-tl-lg rounded-tr-lg"
-                                src={product.imgUrl[0]}
-                                alt={product.name}
-                            />
-                            </Link>
-                        </div>
-                        <div className="p-5 font-poppins">
-                            <div className="flex justify-between items-center">
-                                <h3 className="font-semibold text-lg sm:text-xl">{product.name}</h3>
-                            </div>
-
-                            <div className="flex items-center mt-2">
-                                <div>
-                                    <span className="font-semibold text-lg">₹</span>
-                                    <span className="font-bold text-2xl">{product.price - (product.price * 20) / 100}</span>
-                                </div>
-                                <div>
-                                    <span className="text-gray-400 line-through ml-2">₹{product.price}</span>
-                                </div>
-                            </div>
-
-                            <div className="flex items-center justify-between mt-2">
-                                <div className="flex space-x-1">
-                                    {[5, 4, 3, 2, 1].map((val) => (
-                                        <label key={val}>
-                                            <input type="radio" name="rating" value={product.star} className="hidden" />
-                                            <span className="text-red-500 cursor-pointer text-xl">&#9733;</span>
-                                        </label>
-                                    ))}
-                                </div>
-                                <span className="text-slate-300">{product.viewers} Views</span>
-                            </div>
-                        </div>
+        <section className="py-16 bg-white">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+                    <div>
+                        <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 tracking-tight">
+                            Recommended for You
+                        </h2>
+                        <p className="text-gray-500 mt-2 max-w-xl">
+                            Based on your recent activity, we've curated these pieces just for you.
+                        </p>
                     </div>
-                ))}
+                    
+                    {/* Category Selection Tabs */}
+                    <div className="flex bg-slate-100 p-1 rounded-xl w-fit">
+                        {categories.map((category) => (
+                            <button
+                                key={category.id}
+                                onClick={() => setSelectedCategory(category.id)}
+                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                                    selectedCategory === category.id
+                                    ? "bg-white text-zinc-900 shadow-sm"
+                                    : "text-gray-500 hover:text-zinc-900"
+                                }`}
+                            >
+                                {category.label}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+                    {filteredProducts.map((product, i) => (
+                        <ProductCard key={i} product={product} />
+                    ))}
+                </div>
             </div>
-        </>
+        </section>
     );
 }

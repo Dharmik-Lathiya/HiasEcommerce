@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes, Route, Navigate } from "react-router";
+import { Routes, Route, Navigate } from "react-router-dom";
 import HomePage from './Components/HomePage';
 import Login from './Components/Login';
 import AdminPanel from './Components/adminPanel/adminPanel';
@@ -22,7 +22,7 @@ function App() {
   
 
   useEffect(() => {
-    fetch(import.meta.env.VITE_API_KEY+"/admin/allProducts", {
+    fetch(import.meta.env.VITE_API_KEY.replace(/\/$/, '') + "/admin/allProducts", {
       method: "POST"
     }).then(res => {
       res.json().then(data => {

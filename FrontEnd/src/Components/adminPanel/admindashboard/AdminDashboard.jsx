@@ -17,7 +17,7 @@ export default function () {
     useEffect(() => {
         console.log(year);
         
-        fetch(import.meta.env.VITE_API_KEY + "/OrderDetails", {
+        fetch(import.meta.env.VITE_API_KEY.replace(/\/$/, '') + "/OrderDetails", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

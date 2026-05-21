@@ -18,7 +18,7 @@ export default function Login() {
       password: e.target[1].value,
     };
 
-    fetch(import.meta.env.VITE_API_KEY + "/user/login", {
+    fetch(import.meta.env.VITE_API_KEY.replace(/\/$/, '') + "/user/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -72,7 +72,7 @@ export default function Login() {
       password: e.target[3].value,
     };
 
-    fetch(import.meta.env.VITE_API_KEY + "/user/signup", {
+    fetch(import.meta.env.VITE_API_KEY.replace(/\/$/, '') + "/user/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

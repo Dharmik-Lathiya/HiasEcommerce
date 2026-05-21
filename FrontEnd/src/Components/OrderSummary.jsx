@@ -46,7 +46,7 @@ export default function OrderSummary({ products }) {
     })
 
 
-    fetch(import.meta.env.VITE_API_KEY+"/buy", {
+    fetch(import.meta.env.VITE_API_KEY.replace(/\/$/, '') + "/buy", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

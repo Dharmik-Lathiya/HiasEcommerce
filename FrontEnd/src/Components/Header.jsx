@@ -35,16 +35,16 @@ const Header = () => {
       onMouseLeave={handleMouseLeave}
     >
       <ul className="text-gray-700">
-        <li className="px-4 py-2 hover:bg-green-100">
+        <li className="px-4 py-2 hover:bg-emerald-50">
           <Link to="/Categories/Menswear">MensWear</Link>
         </li>
-        <li className="px-4 py-2 hover:bg-green-100">
+        <li className="px-4 py-2 hover:bg-emerald-50">
           <Link to="/Categories/Womenswear">WomenWear</Link>
         </li>
-        <li className="px-4 py-2 hover:bg-green-100">
+        <li className="px-4 py-2 hover:bg-emerald-50">
           <Link to="/Categories/Kidwear">KidsWear</Link>
         </li>
-        <li className="px-4 py-2 hover:bg-green-100">
+        <li className="px-4 py-2 hover:bg-emerald-50">
           <Link to="/Categories/Sports">SportsWear</Link>
         </li>
       </ul>
@@ -68,7 +68,7 @@ const Header = () => {
             placeholder="Search our store"
             className="w-full border border-gray-300 rounded-l-md p-2 focus:outline-none"
           />
-          <button className="bg-green-500 text-white p-2 rounded-r-md">
+          <button className="bg-emerald-500 text-white p-2 rounded-r-md">
             <i className="fas fa-search"></i>
           </button>
         </div>
@@ -81,7 +81,7 @@ const Header = () => {
           <Link to="/Cart">
             <button className="text-gray-600 relative">
               <i className="fas fa-shopping-cart"></i>
-              <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">{cartCounter}</span>
+              <span className="absolute -top-1 -right-1 bg-emerald-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">{cartCounter}</span>
             </button>
           </Link>
           <Link to="/" onClick={() => { localStorage.setItem("isAdmin", false); localStorage.setItem("isLogedIn", false); localStorage.setItem("userId", ""); }} className="block py-2 px-4 hover:bg-red-600 rounded text-gray-600">
@@ -98,13 +98,13 @@ const Header = () => {
             <i className="fas fa-bars"></i> All Categories
           </button>
           {openSubmenu === "AllCategories" && <Submenu isVisible={true} />}
-          <Link to="/" className="hover:text-green-500">Home</Link>
+          <Link to="/" className="hover:text-emerald-500">Home</Link>
           <div className="relative" onMouseEnter={() => handleMouseEnter("Categories")} onMouseLeave={handleMouseLeave}>
-            <Link to="/Categories" className="hover:text-green-500">Categories</Link>
+            <Link to="/Categories" className="hover:text-emerald-500">Categories</Link>
             {openSubmenu === "Categories" && <Submenu isVisible={true} />}
           </div>
-          <Link to="/About-Us" className="hover:text-green-500">About Us</Link>
-          <Link to="/Contact-Us" className="hover:text-green-500">Contact Us</Link>
+          <Link to="/About-Us" className="hover:text-emerald-500">About Us</Link>
+          <Link to="/Contact-Us" className="hover:text-emerald-500">Contact Us</Link>
         </div>
         <span className="text-gray-600">UP TO 60% off All Items</span>
       </nav>

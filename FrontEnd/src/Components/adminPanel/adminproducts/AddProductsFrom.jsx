@@ -51,7 +51,7 @@ export default function AddProductsForm() {
 
     console.log(formData);
     if(prodid){
-      fetch(import.meta.env.VITE_API_KEY+"/admin/updateProducts", {
+      fetch(import.meta.env.VITE_API_KEY.replace(/\/$/, '') + "/admin/updateProducts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +68,7 @@ export default function AddProductsForm() {
       })
 
     }else{
-    fetch(import.meta.env.VITE_API_KEY+"/admin/addProducts", {
+    fetch(import.meta.env.VITE_API_KEY.replace(/\/$/, '') + "/admin/addProducts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -89,7 +89,7 @@ export default function AddProductsForm() {
   };
 
   function deleteProduct(){
-    fetch(import.meta.env.VITE_API_KEY+"/admin/deleteProducts", {
+    fetch(import.meta.env.VITE_API_KEY.replace(/\/$/, '') + "/admin/deleteProducts", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id: prodid })
@@ -115,7 +115,7 @@ export default function AddProductsForm() {
       })
 
     if (prodid) {
-      fetch(import.meta.env.VITE_API_KEY+"/admin/allProducts", {
+      fetch(import.meta.env.VITE_API_KEY.replace(/\/$/, '') + "/admin/allProducts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

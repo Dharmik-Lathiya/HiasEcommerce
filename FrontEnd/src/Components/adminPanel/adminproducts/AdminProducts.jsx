@@ -10,7 +10,7 @@ export default function AdminProducts() {
 
   useEffect(() => {
 
-    fetch(import.meta.env.VITE_API_KEY+"/admin/allProducts", {
+    fetch(import.meta.env.VITE_API_KEY.replace(/\/$/, '') + "/admin/allProducts", {
       method: "POST"
     }).then(res => {
       res.json().then(data => {

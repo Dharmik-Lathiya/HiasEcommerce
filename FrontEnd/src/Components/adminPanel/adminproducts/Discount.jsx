@@ -16,7 +16,7 @@ export default function Discount({id,isOpen,setIsOpen}) {
     }
     function handleSubmit(e){
         e.preventDefault();
-        fetch(import.meta.env.VITE_API_KEY+"/admin/updateProducts", {
+        fetch(import.meta.env.VITE_API_KEY.replace(/\/$/, '') + "/admin/updateProducts", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
